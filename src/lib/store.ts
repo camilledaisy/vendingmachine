@@ -7,10 +7,11 @@ export interface Saved {
   favs: string[]
   sound: boolean
   calm: boolean | null // null = follow the system setting
+  place: { lat: number; lon: number } | null // rounded; set only if the visitor asks for live weather
 }
 
 const KEY = 'evm:v1'
-const empty: Saved = { owned: {}, order: [], favs: [], sound: false, calm: null }
+const empty: Saved = { owned: {}, order: [], favs: [], sound: false, calm: null, place: null }
 const known = new Set(ITEMS.map((i) => i.id))
 
 function load(): Saved {
@@ -27,6 +28,7 @@ function load(): Saved {
       favs: (Array.isArray(r.favs) ? r.favs : []).filter((id: string) => owned[id]),
       sound: r.sound === true,
       calm: typeof r.calm === 'boolean' ? r.calm : null,
+      place: r.place && typeof r.place.lat === 'number' && typeof r.place.lon === 'number' ? { lat: r.place.lat, lon: r.place.lon } : null,
     }
   } catch {
     return empty

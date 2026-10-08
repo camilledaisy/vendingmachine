@@ -216,7 +216,7 @@ body {
 .puddle { border-radius: 50%; background: radial-gradient(ellipse, rgba(255,250,240,.55), rgba(163,177,138,.25) 60%, transparent 72%); border-bottom: 2px solid rgba(64,59,54,.25); animation: shimmer 5s ease-in-out infinite; }
 .pigeon-walk { animation: pigeonwalk 26s linear infinite; }
 .pigeon-head { transform-box: fill-box; transform-origin: 30% 100%; animation: peck 1.4s ease-in-out infinite; }
-.neon { box-shadow: 0 0 18px rgba(212,165,165,.55), inset 0 0 8px rgba(0,0,0,.6); }
+.neon { filter: brightness(var(--neon, 1)); box-shadow: 0 0 18px rgba(212,165,165,.55), inset 0 0 8px rgba(0,0,0,.6); }
 .neon-a { color: #F2D98D; text-shadow: 0 0 6px #F2D98D, 0 0 14px rgba(242,217,141,.7); animation: neon 6s ease-in-out infinite; }
 .neon-b { color: #D4A5A5; text-shadow: 0 0 6px #D4A5A5, 0 0 12px rgba(212,165,165,.7); }
 @keyframes lampflick { 0%,100% { opacity: 1 } 40% { opacity: .88 } 42% { opacity: 1 } 75% { opacity: .92 } }
@@ -224,6 +224,21 @@ body {
 @keyframes pigeonwalk { 0% { transform: translateX(0) scaleX(1) } 42% { transform: translateX(150px) scaleX(1) } 50% { transform: translateX(150px) scaleX(-1) } 92% { transform: translateX(0) scaleX(-1) } 100% { transform: translateX(0) scaleX(1) } }
 @keyframes peck { 0%,60%,100% { transform: rotate(0) } 70% { transform: rotate(32deg) translateY(2px) } 80% { transform: rotate(0) } 90% { transform: rotate(28deg) } }
 @keyframes neon { 0%,100% { opacity: 1 } 47% { opacity: .85 } 50% { opacity: 1 } }
+
+/* ---- time-of-day and weather ---- */
+.sky-tint { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: var(--tint); mix-blend-mode: multiply; transition: background 1.5s; }
+.sky-wash { position: absolute; inset: 0; z-index: 2; pointer-events: none; background: var(--wash); transition: background 1.5s; }
+.sky-spill { background: radial-gradient(ellipse at 50% 45%, rgba(255,226,150,.55), rgba(255,226,150,.18) 45%, transparent 70%); opacity: var(--spill); transition: opacity 1.5s; }
+.ground { background-color: var(--ground); transition: background-color 1.5s; }
+.ground-text { color: var(--ground-text); transition: color 1.5s; }
+.fx-rain { position: absolute; top: -60px; width: 1.5px; background: linear-gradient(transparent, rgba(235,244,255,.7)); animation: rain linear infinite; transform: rotate(8deg); }
+.fx-snow { position: absolute; top: -10px; border-radius: 50%; background: #fff; opacity: .85; animation: snow linear infinite; }
+.fx-fog { background: linear-gradient(transparent, rgba(240,240,242,.55) 55%, rgba(240,240,242,.2)); animation: fogdrift 18s ease-in-out infinite alternate; }
+@keyframes rain { to { transform: translate(-30px, 130vh) rotate(8deg) } }
+@keyframes snow { 0% { transform: translate(0,0) } 50% { transform: translate(24px, 60vh) } 100% { transform: translate(-10px, 125vh) } }
+@keyframes fogdrift { from { transform: translateX(-3%) } to { transform: translateX(3%) } }
+.calm .fx { display: none; }
+.calm .fx-fog { display: block; }
 
 /* Calm motion: switched on by the visitor or by the system setting. */
 .calm *, .calm *::before, .calm *::after { animation: none !important; transition-duration: .01ms !important; }

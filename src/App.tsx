@@ -1,9 +1,11 @@
 import { useEffect, useMemo, useState } from 'react'
 import { AnimatePresence, MotionConfig, useReducedMotion } from 'motion/react'
-import { Receipt, Library, Volume2, VolumeX, Feather } from 'lucide-react'
+import { Receipt, Library, Volume2, VolumeX, Feather, CloudSun } from 'lucide-react'
 import { ITEMS, type Item } from './data/items'
 import { useSaved } from './lib/store'
 import { setSoundEnabled } from './lib/sound'
+import { LOOK, WASH, fetchWeather, getPosition, phaseFor, useNow, type Sun, type Weather } from './lib/sky'
+import { WeatherFx } from './components/WeatherFx'
 import { VendingMachine } from './components/VendingMachine'
 import { CollectionShelf } from './components/CollectionShelf'
 import { MaintenanceLog } from './components/MaintenanceLog'
@@ -31,6 +33,34 @@ export default function App() {
   }, [reduced])
   useEffect(() => setSoundEnabled(saved.sound), [saved.sound])
 
+  // Lighting follows the visitor's local clock; live weather is opt-in (it needs their rough location).
+  const now = useNow()
+  const [live, setLive] = useState<{ weather: Weather; sun: Sun } | null>(null)
+  const [skyMsg, setSkyMsg] = useState('')
+  useEffect(() => {
+    if (!saved.place) return setLive(null)
+    let stop = false
+    fetchWeather(saved.place.lat, saved.place.lon).then((w) => !stop && setLive(w)).catch(() => !stop && setSkyMsg('Could not reach the weather. The machine will guess.'))
+    return () => { stop = true }
+  }, [saved.place])
+  const toggleWeather = async () => {
+    if (saved.place) return (update((s) => ({ ...s, place: null })), setSkyMsg('Weather off. The machine goes back to guessing.'))
+    setSkyMsg('Asking for your rough location, only to check the weather…')
+    try {
+      const place = await getPosition()
+      update((s) => ({ ...s, place }))
+      setSkyMsg('')
+    } catch {
+      setSkyMsg('No location, no weather. The machine will go by the clock.')
+    }
+  }
+  const q = new URLSearchParams(location.search)
+  const forcedPhase = q.get('sky') as keyof typeof LOOK | null
+  const phase = forcedPhase && forcedPhase in LOOK ? forcedPhase : phaseFor(now, live?.sun)
+  const forcedWeather = q.get('weather') as Weather | null
+  const weather: Weather = forcedWeather && forcedWeather in WASH ? forcedWeather : live?.weather ?? 'clear'
+
+
   const onCollect = (item: Item) => {
     const isNew = !saved.owned[item.id]
     collect(item.id)
@@ -42,7 +72,10 @@ export default function App() {
 
   return (
     <MotionConfig reducedMotion={reduced ? 'always' : 'user'}>
-      <div className="scene relative flex min-h-screen flex-col overflow-x-clip">
+      <div className="scene relative flex min-h-screen flex-col overflow-x-clip" data-phase={phase} data-weather={weather} style={{ ...LOOK[phase], ["--wash" as string]: WASH[weather] }}>
+        <div className="sky-tint" aria-hidden />
+        <div className="sky-wash" aria-hidden />
+        <WeatherFx weather={weather} />
         {!reduced && (
           <div className="pointer-events-none absolute inset-0" aria-hidden>
             {dust.map((p, i) => (
@@ -55,12 +88,13 @@ export default function App() {
           <h1 className="drop-in paper mx-auto inline-block max-w-[92vw] -rotate-[0.6deg] border-[3px] border-burgundy px-5 py-3 font-display text-[22px] font-bold leading-tight tracking-wide text-charcoal shadow-[4px_5px_0_rgba(64,59,54,.3)] sm:text-4xl md:text-[36px]">
             THE EMOTIONAL VENDING MACHINE
           </h1>
-          <p style={{ ["--d" as string]: ".5s" }} className="rise mt-3 font-tagline text-[19px] font-medium italic leading-snug text-burgundy sm:text-[22px] md:text-[26px]">“Some things you need aren’t sold in stores.”</p>
+          <p style={{ ["--d" as string]: ".5s" }} className="rise mt-3 font-tagline [color:var(--tagline)] text-[19px] font-medium italic leading-snug sm:text-[22px] md:text-[26px]">“Some things you need aren’t sold in stores.”</p>
         </header>
 
         <main className="relative z-10 flex flex-1 flex-col">
           <div className="px-3">
           <div style={{ ["--d" as string]: ".25s" }} className="rise relative mx-auto max-w-[580px]">
+            <div className="sky-spill pointer-events-none absolute -inset-x-28 -inset-y-12" aria-hidden />
             <div className="absolute right-[calc(100%+30px)] top-[10px] hidden lg:block" aria-hidden><NeonSign /></div>
             <div className="absolute right-[calc(100%+150px)] top-[110px] hidden xl:block" aria-hidden><TearFlyer /></div>
             <div className="absolute -right-[84px] bottom-0 hidden lg:block" aria-hidden>
@@ -79,11 +113,11 @@ export default function App() {
           </div>
           </div>
 
-          <div className="ground relative flex-1 px-3 pb-10 pt-6">
-            <div className="street-glow pointer-events-none absolute left-1/2 top-0 h-[160px] w-[760px] max-w-full -translate-x-1/2" aria-hidden />
+          <div className="ground ground-text relative flex-1 px-3 pb-10 pt-6">
+            <div className="pointer-events-none absolute left-1/2 top-0 h-[160px] w-[760px] max-w-full -translate-x-1/2" style={{ opacity: "var(--glow)" }} aria-hidden><div className="street-glow h-full w-full" /></div>
             <div className="puddle pointer-events-none absolute left-[calc(50%-190px)] top-[10px] h-[22px] w-[170px]" aria-hidden />
-            <div className="pointer-events-none absolute left-[6%] top-[4px]" aria-hidden><Pigeon /></div>
-          <p className="relative mx-auto mt-5 max-w-[34rem] text-center font-serif text-[15px] font-medium text-charcoal">
+            {phase !== "night" && <div className="pointer-events-none absolute left-[6%] top-[4px]" aria-hidden><Pigeon /></div>}
+          <p className="relative mx-auto mt-5 max-w-[34rem] text-center font-serif text-[15px] font-medium">
             Open 24 hours. No money required. No refunds on existential realizations.
           </p>
 
@@ -100,10 +134,15 @@ export default function App() {
             <button className="btn" aria-pressed={saved.sound} onClick={() => update((s) => ({ ...s, sound: !s.sound }))}>
               {saved.sound ? <Volume2 size={17} aria-hidden /> : <VolumeX size={17} aria-hidden />} Sound: {saved.sound ? 'on' : 'off'}
             </button>
+            <button className="btn" aria-pressed={!!saved.place} onClick={toggleWeather}>
+              <CloudSun size={17} aria-hidden /> Live weather: {saved.place ? 'on' : 'off'}
+            </button>
             <button className="btn" aria-pressed={reduced} onClick={() => update((s) => ({ ...s, calm: !reduced }))}>
               <Feather size={17} aria-hidden /> Calm motion: {reduced ? 'on' : 'off'}
             </button>
           </nav>
+
+          <p role="status" className="relative mx-auto mt-3 max-w-md text-center font-serif text-sm">{skyMsg}</p>
 
           {!storageOk && (
             <p role="alert" className="mx-auto mt-4 max-w-md rounded-lg border-2 border-burgundy bg-cream p-2 text-center font-serif text-sm text-burgundy">
@@ -111,7 +150,7 @@ export default function App() {
             </p>
           )}
 
-          <footer className="relative mx-auto mt-8 max-w-md text-center font-serif text-[13px] leading-relaxed text-charcoal/85">
+          <footer className="relative mx-auto mt-8 max-w-md text-center font-serif text-[13px] leading-relaxed opacity-90">
             A small thing made with care. I don’t know what you’re going through. I am a vending machine. If today is heavier than a vending machine can carry, a person can carry it better. Please talk to one.
           </footer>
           </div>
