@@ -54,7 +54,8 @@ export function CollectionShelf({ owned, order, favs, onMove, onToggleFav, onClo
                       onDrop={() => (drag !== null && onMove(drag, i), setDrag(null), setOver(null))}
                       onClick={() => setOpenId(id)}
                       aria-label={`${byId(id)!.name}${favs.includes(id) ? ', favourite' : ''}${owned[id] > 1 ? `, received ${owned[id]} times` : ''}`}
-                      className={`shelf-item relative flex h-[78px] w-[78px] items-end justify-center rounded-lg ${over === i && drag !== i ? 'bg-butter/60' : ''} ${drag === i ? 'opacity-40' : ''}`}
+                      style={{ ['--d' as string]: `${i * 45}ms` }}
+                      className={`rise shelf-item relative flex h-[78px] w-[78px] items-end justify-center rounded-lg ${over === i && drag !== i ? 'bg-butter/60' : ''} ${drag === i ? 'opacity-40' : ''}`}
                     >
                       <ObjectArt id={id} size={70} />
                       {favs.includes(id) && <Heart size={15} aria-hidden fill="#914F4F" className="absolute right-0 top-0 text-burgundy" />}

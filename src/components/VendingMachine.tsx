@@ -41,6 +41,7 @@ export function VendingMachine({ owned, favs, reduced, birthday, onCollect, onTo
   const [announce, setAnnounce] = useState('')
   const [parcel, setParcel] = useState(false) // F06 hands over a wrapped parcel
   const [opened, setOpened] = useState(false)
+  const [purr, setPurr] = useState(false)
   const parcelRef = useRef(false)
   const root = useRef<HTMLDivElement>(null)
   const tray = useRef<HTMLDivElement>(null)
@@ -192,9 +193,18 @@ export function VendingMachine({ owned, favs, reduced, birthday, onCollect, onTo
       <button
         className="absolute -top-[50px] left-6 z-10 cursor-pointer md:left-10"
         aria-label="A sleeping cat"
-        onClick={() => say('The cat is not part of the inventory.', 'Please do not ask. It has been tried.')}
+        onClick={() => {
+          say('The cat is not part of the inventory.', 'Please do not ask. It has been tried.')
+          setPurr(true)
+          later(() => setPurr(false), 1800)
+        }}
       >
-        <Cat />
+        <span className={`block ${purr ? 'purr' : ''}`}>
+          <Cat />
+        </span>
+        {purr && [0, 0.35, 0.7].map((d, i) => (
+          <i key={i} aria-hidden className="heart-float not-italic" style={{ left: 62 + i * 12, ['--d' as string]: `${d}s` }}>♥</i>
+        ))}
       </button>
       {birthday && <PartyHat className="absolute -top-[34px] right-[18%] z-10 rotate-6" />}
 
@@ -216,6 +226,7 @@ export function VendingMachine({ owned, favs, reduced, birthday, onCollect, onTo
             <CategorySelector
               selected={sel}
               taken={taken}
+              vending={phase === 'dispensing' && !taken}
               awake={awake || phase === 'idle'}
               locked={busy}
               onSelect={select}
@@ -247,14 +258,18 @@ export function VendingMachine({ owned, favs, reduced, birthday, onCollect, onTo
 
           {/* tray */}
           <div ref={tray} className="tray relative mt-2.5 h-[68px] overflow-hidden md:mt-3 md:h-[70px] rounded-lg border-[3px] border-charcoal bg-charcoal">
+            {trayOpen && phase !== 'revealed' && [0, 1, 2, 3, 4].map((i) => (
+              <i key={i} aria-hidden className="puff" style={{ left: `${18 + i * 16}%`, ['--d' as string]: `${i * 0.08}s`, ['--x' as string]: `${(i - 2) * 8}px` }} />
+            ))}
             <AnimatePresence>
               {phase === 'delivered' && item && (
                 <motion.button
                   ref={trayBtn}
                   key="tray-item"
                   onClick={collect}
-                  initial={{ y: -20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
+                  initial={{ y: -30, opacity: 0, scale: 0.7 }}
+                  animate={{ y: 0, opacity: 1, scale: 1 }}
+                  transition={{ type: 'spring', stiffness: 320, damping: 14 }}
                   exit={{ opacity: 0, scale: 0.6 }}
                   className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-0.5 rounded-md"
                   aria-label={`Collect item: ${parcel ? 'mystery parcel' : item.name}`}

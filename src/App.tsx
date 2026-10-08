@@ -52,14 +52,14 @@ export default function App() {
         )}
 
         <header className="relative z-10 px-4 pb-11 pt-4 text-center">
-          <h1 className="paper mx-auto inline-block max-w-[92vw] -rotate-[0.6deg] border-[3px] border-burgundy px-5 py-3 font-display text-[22px] font-bold leading-tight tracking-wide text-charcoal shadow-[4px_5px_0_rgba(64,59,54,.3)] sm:text-4xl md:text-[36px]">
+          <h1 className="drop-in paper mx-auto inline-block max-w-[92vw] -rotate-[0.6deg] border-[3px] border-burgundy px-5 py-3 font-display text-[22px] font-bold leading-tight tracking-wide text-charcoal shadow-[4px_5px_0_rgba(64,59,54,.3)] sm:text-4xl md:text-[36px]">
             THE EMOTIONAL VENDING MACHINE
           </h1>
-          <p className="mt-3 font-tagline text-[19px] leading-snug text-burgundy sm:text-[22px] md:text-[25px]">“Some things you need aren’t sold in stores.”</p>
+          <p style={{ ["--d" as string]: ".5s" }} className="rise mt-3 font-tagline text-[19px] leading-snug text-burgundy sm:text-[22px] md:text-[25px]">“Some things you need aren’t sold in stores.”</p>
         </header>
 
         <main className="relative z-10 px-3">
-          <div className="relative mx-auto max-w-[580px]">
+          <div style={{ ["--d" as string]: ".25s" }} className="rise relative mx-auto max-w-[580px]">
             <div className="absolute -right-[84px] bottom-0 hidden lg:block" aria-hidden>
               <Topiary />
             </div>
@@ -79,7 +79,7 @@ export default function App() {
             Open 24 hours. No money required. No refunds on existential realizations.
           </p>
 
-          <nav aria-label="Machine extras" className="mx-auto mt-5 flex max-w-[600px] flex-wrap justify-center gap-2.5">
+          <nav aria-label="Machine extras" style={{ ["--d" as string]: ".7s" }} className="rise mx-auto mt-5 flex max-w-[600px] flex-wrap justify-center gap-2.5">
             <button className="btn btn-primary" onClick={() => setPanel('shelf')}>
               <Library size={17} aria-hidden /> MY LITTLE SHELF
               <span className="rounded-full bg-cream px-2 font-display text-xs text-burgundy" aria-label={`${found} of ${ITEMS.length} discovered`}>

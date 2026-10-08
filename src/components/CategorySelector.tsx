@@ -4,6 +4,7 @@ import { ObjectArt } from './ObjectArt'
 interface Props {
   selected: CatId | null
   taken: CatId | null // compartment that just dropped something
+  vending: boolean
   awake: boolean
   locked: boolean
   onSelect: (id: CatId) => void
@@ -11,7 +12,7 @@ interface Props {
 }
 
 // The lit window of the machine; each compartment is one option.
-export function CategorySelector({ selected, taken, awake, locked, onSelect, setRef }: Props) {
+export function CategorySelector({ selected, taken, vending, awake, locked, onSelect, setRef }: Props) {
   return (
     <div role="group" aria-label="What do you need today? Choose a compartment" className={`window relative grid flex-1 grid-cols-3 gap-[3px] rounded-lg border-[3px] border-charcoal bg-charcoal ${awake ? 'window-on' : ''}`}>
       {CATEGORIES.map((c) => {
@@ -26,7 +27,7 @@ export function CategorySelector({ selected, taken, awake, locked, onSelect, set
             className={`cell group relative flex min-h-[104px] flex-col items-center justify-between px-1 pb-1 pt-5 md:min-h-[118px] md:px-1.5 md:pb-1.5 md:pt-6 ${on ? 'cell-on' : ''}`}
           >
             <span className="absolute left-1.5 top-1.5 rounded bg-charcoal px-1.5 font-display text-[11px] leading-[17px] text-butter">{c.code}</span>
-            <span className={`transition-transform duration-300 ${taken === c.id ? 'opacity-0' : 'group-hover:-translate-y-0.5 group-hover:rotate-[-3deg]'}`}>
+            <span className={`transition-transform duration-300 ${taken === c.id ? 'opacity-0' : vending && on ? 'wiggle' : 'group-hover:-translate-y-0.5 group-hover:rotate-[-3deg]'}`}>
               <ObjectArt id={c.art} size={50} />
             </span>
             <span className="mt-1 block w-full rounded-[3px] bg-cream/90 px-0.5 py-[2px] text-center font-serif text-[10.5px] font-medium leading-[1.15] md:px-1 md:py-[3px] md:text-[11.5px] text-charcoal">{c.label}</span>

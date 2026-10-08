@@ -19,7 +19,7 @@ export function MachineDisplay({ lines, error, asleep, onWake, instant }: { line
       <span className="sr-only">
         {lines[0]} {lines[1]}
       </span>
-      <span aria-hidden className={`block text-[22px] leading-[1.05] md:text-[25px] ${error ? 'text-rose' : 'text-butter'}`}>
+      <span aria-hidden key={lines[0]} className={`lcd-in block text-[22px] leading-[1.05] md:text-[25px] ${error ? 'text-rose' : 'text-butter'}`}>
         {l1}
         <span className="cursor" />
       </span>

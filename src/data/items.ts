@@ -83,6 +83,14 @@ export const ITEMS: Item[] = [
   { id: 'snail', cat: 'E', inv: '0846', name: 'A Snail, Briefly', message: 'A snail can sleep for three years. Imagine the audacity.', description: 'On loan, in a manner of speaking. Please do not rush it.' },
   { id: 'marble', cat: 'E', inv: '0111', name: 'One Good Marble', message: "Hold it up to the light. Don't make it mean anything. Just look.", description: 'Green glass swirl. Previously owned by a very serious child.' },
 
+  // E — word games & fidgets
+  { id: 'soup', cat: 'E', inv: '1101', name: 'Alphabet Soup, Spilled', message: 'The letters are all in there somewhere. They have opinions about the order.', description: 'Still warm. Spells things if you let it.' },
+  { id: 'wordtiles', cat: 'E', inv: '1102', name: 'Five-Letter Word, Loosely', message: 'Somewhere in the pile is a word. It is not in a hurry either.', description: 'Four wooden tiles and a hunch. The fifth is in your pocket.' },
+  { id: 'sliding', cat: 'E', inv: '1103', name: 'Sliding Tile Puzzle', message: 'Everything is out of order. One small gap, and slowly it fixes itself.', description: 'Eight tiles and one empty space. The empty space is doing most of the work.' },
+  { id: 'bubbles', cat: 'E', inv: '1104', name: 'Strip of Bubble Wrap', message: 'Each one is a tiny, guilt-free decision.', description: 'Fresh, taut, and extremely popular with fingers.' },
+  { id: 'bells', cat: 'E', inv: '1105', name: 'Four Small Bells', message: 'Listen. Then say it back. That is the whole conversation.', description: 'They remember the order better than you do. Probably.' },
+  { id: 'noughts', cat: 'E', inv: '1106', name: 'Paper Noughts and Crosses', message: 'Nobody has ever really won. We have all had a nice time.', description: 'A napkin, a pen that works, and a very patient opponent.' },
+
   // F — I don't know
   { id: 'permission', cat: 'F', inv: '0654', name: 'Emergency Permission Slip', message: 'You are officially permitted to change your mind.', description: 'Signed, stamped and valid in all situations, including this one.' },
   { id: 'jar2', cat: 'F', inv: '0275', name: 'Unlabelled Jar', message: 'Contents unknown. Possibly nothing. Possibly something. Keep it a while.', description: 'The label was left blank on purpose. It rattles in a hopeful way.' },

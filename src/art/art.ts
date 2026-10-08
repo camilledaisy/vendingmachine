@@ -196,6 +196,33 @@ export const ART: Record<string, string> = {
     L('M13 38 Q30 22 51 36', `stroke="${C}" stroke-width="3"`) + L('M17 47 Q32 36 46 48', `stroke="${Y}" stroke-width="3"`) +
     E(23, 21, 6, 3.5, '#fff', 'transform="rotate(-35 23 21)" stroke="none" opacity=".7"'),
 
+
+  // E (new games)
+  soup:
+    L('M24 8 q-3 3 0 6 t0 6 M36 6 q-3 3 0 6 t0 6', 'stroke-width="1.5" opacity=".45"') +
+    P('M7 28 H57 Q55 52 32 52 Q9 52 7 28Z', R) + E(32, 28, 25, 6, Y) +
+    T(20, 30, 8, 'A') + T(31, 32, 8, 'B') + T(43, 29, 8, 'Z') + T(26, 25, 7, 'K') + T(38, 24, 7, 'M') +
+    Rt(21, 52, 22, 5, B, 1.5),
+  wordtiles:
+    G_('rotate(-6 32 32)', Rt(4, 22, 13, 16, G, 2) + Rt(19, 22, 13, 16, Y, 2) + Rt(34, 22, 13, 16, C, 2) + Rt(49, 22, 11, 16, R, 2) +
+      T(10.5, 34, 11, 'W') + T(25.5, 34, 11, 'O') + T(40.5, 34, 11, 'R') + T(54.5, 34, 11, 'D')) +
+    L('M12 46 H52', 'stroke-width="1.2" opacity=".35" stroke-dasharray="2 3"'),
+  sliding:
+    Rt(6, 6, 52, 52, B, 4) +
+    Rt(10, 10, 14, 14, C, 1.5) + Rt(25, 10, 14, 14, G, 1.5) + Rt(40, 10, 14, 14, Y, 1.5) +
+    Rt(10, 25, 14, 14, R, 1.5) + Rt(25, 25, 14, 14, C, 1.5) + Rt(40, 25, 14, 14, G, 1.5) +
+    Rt(10, 40, 14, 14, Y, 1.5) + Rt(25, 40, 14, 14, R, 1.5),
+  bubbles:
+    Rt(6, 8, 52, 48, '#E4EEEE', 4, 'fill-opacity=".85"') +
+    [16, 32, 48].map((x) => [20, 32, 44].map((y) => O(x, y, 6, '#F6FBFB') + L(`M${x - 3} ${y - 1} Q${x - 2} ${y - 4} ${x + 1} ${y - 4}`, 'stroke-width="1.2" opacity=".6"')).join('')).join(''),
+  bells:
+    P('M22 8 Q10 12 10 32 L6 40 H38 L34 32 Q34 12 22 8Z',Y) + O(22,44,3.5,K,'stroke="none"') + L('M22 8 V4') +
+    P('M44 8 Q32 12 32 32 L28 40 H60 L56 32 Q56 12 44 8Z',R) + O(44,44,3.5,K,'stroke="none"') + L('M44 8 V4') ,
+  noughts:
+    Rt(6, 6, 52, 52, C, 3) + L('M24 10 V54 M40 10 V54 M10 24 H54 M10 40 H54', 'stroke-width="2.2"') +
+    L('M13 13 L21 21 M21 13 L13 21', `stroke="${B}" stroke-width="2.5"`) + O(32, 32, 5, 'none', `stroke="${GREEN}" stroke-width="2.5"`) +
+    L('M43 43 L51 51 M51 43 L43 51', `stroke="${B}" stroke-width="2.5"`) + O(48, 16, 5, 'none', `stroke="${GREEN}" stroke-width="2.5"`),
+
   // F
   permission:
     Rt(10, 6, 44, 52, W, 2) + Rt(10, 6, 44, 11, B, 2) + T(32, 14.5, 6.5, 'PERMIT', C) +

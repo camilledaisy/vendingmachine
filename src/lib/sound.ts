@@ -52,6 +52,9 @@ export function setSoundEnabled(on: boolean) {
 
 export const sfx = {
   click: () => tone(720, 0.05, 'square', 0.035),
+  pop: () => tone(380 + Math.random() * 260, 0.07, 'sine', 0.07, 0, 120),
+  note: (f: number) => tone(f, 0.45, 'sine', 0.07),
+  tile: () => tone(260, 0.06, 'triangle', 0.05),
   whirr: () => tone(120, 0.9, 'sawtooth', 0.04, 0, 260),
   drop: () => tone(300, 0.25, 'triangle', 0.06, 0, 90),
   clunk: () => {

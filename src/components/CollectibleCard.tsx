@@ -48,14 +48,19 @@ export function CollectibleCard({ item, isNew, fav, onFav, onClose, closeLabel =
             </span>
             <span>No. {item.inv}</span>
           </div>
-          <div className="card-art relative mt-3 flex items-center justify-center rounded-lg border-2 border-charcoal bg-sage py-5">
+          <div className="card-art relative mt-3 flex overflow-visible items-center justify-center rounded-lg border-2 border-charcoal bg-sage py-5">
             {item.image ? (
               <img src={item.image} alt={item.name} className="max-h-[360px] w-auto max-w-[92%] -rotate-1 rounded border-[6px] border-cream bg-cream object-contain shadow-md" />
             ) : (
               <ObjectArt id={item.id} name={item.name} size={168} className="float" />
             )}
+            <span className="sheen" aria-hidden />
+            {isNew &&
+              ['✦', '✧', '✦', '✧', '✦', '✧', '✦', '✧', '✦', '✧'].map((c, i) => (
+                <i key={i} aria-hidden className="spark not-italic" style={{ ['--x' as string]: `${Math.cos(i * 0.628) * 120}px`, ['--y' as string]: `${Math.sin(i * 0.628) * 90}px`, ['--d' as string]: `${0.25 + (i % 3) * 0.08}s`, color: i % 2 ? '#D4A5A5' : '#F2D98D' }}>{c}</i>
+              ))}
             {isNew && (
-              <span className="absolute right-2 top-2 flex rotate-6 items-center gap-1 rounded border-2 border-burgundy bg-cream px-1.5 py-0.5 font-display text-xs font-bold text-burgundy">
+              <span className="stamp absolute right-2 top-2 flex rotate-6 items-center gap-1 rounded border-2 border-burgundy bg-cream px-1.5 py-0.5 font-display text-xs font-bold text-burgundy">
                 <Sparkles size={12} aria-hidden /> NEW
               </span>
             )}
@@ -75,7 +80,7 @@ export function CollectibleCard({ item, isNew, fav, onFav, onClose, closeLabel =
         {extra}
         <div className="mt-4 flex flex-wrap justify-center gap-2">
           <button className="btn" onClick={onFav} aria-pressed={fav}>
-            <Heart size={16} aria-hidden fill={fav ? '#914F4F' : 'none'} /> {fav ? 'Favourited' : 'Favourite'}
+            <Heart key={String(fav)} size={16} aria-hidden fill={fav ? '#914F4F' : 'none'} className={fav ? 'pop' : ''} /> {fav ? 'Favourited' : 'Favourite'}
           </button>
           {GAMES[item.id] && (
             <button className="btn" onClick={() => setPlaying(true)}>

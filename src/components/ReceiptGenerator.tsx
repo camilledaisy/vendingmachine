@@ -30,7 +30,7 @@ export function ReceiptGenerator({ visit, onClose }: { visit: string[]; onClose:
         <p className="mt-3 font-serif text-[16px] text-charcoal">Nothing to itemise yet. You have not taken anything from the machine this visit. This is allowed. Come back when you are ready.</p>
       ) : (
         <>
-          <img src={svgUrl(receipt.svg)} alt={receipt.alt} width={receipt.w} height={receipt.h} className="receipt mx-auto mt-3 block max-h-[60vh] w-[300px] max-w-full object-contain object-top" />
+          <img src={svgUrl(receipt.svg)} alt={receipt.alt} width={receipt.w} height={receipt.h} className="receipt print mx-auto mt-3 block max-h-[60vh] w-[300px] max-w-full object-contain object-top" />
           <button className="btn !flex w-fit mx-auto mt-4" onClick={save}>
             <Download size={16} aria-hidden /> Save receipt image
           </button>
