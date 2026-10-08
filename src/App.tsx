@@ -9,7 +9,7 @@ import { CollectionShelf } from './components/CollectionShelf'
 import { MaintenanceLog } from './components/MaintenanceLog'
 import { ReceiptGenerator } from './components/ReceiptGenerator'
 import { HatchNote } from './components/HatchNote'
-import { Topiary } from './components/Scenery'
+import { Lamp, NeonSign, Pigeon, TearFlyer, Topiary, Window } from './components/Scenery'
 
 type Panel = 'shelf' | 'log' | 'hatch' | 'receipt' | null
 
@@ -42,7 +42,7 @@ export default function App() {
 
   return (
     <MotionConfig reducedMotion={reduced ? 'always' : 'user'}>
-      <div className="scene relative min-h-screen overflow-x-hidden pb-24">
+      <div className="scene relative flex min-h-screen flex-col overflow-x-clip">
         {!reduced && (
           <div className="pointer-events-none absolute inset-0" aria-hidden>
             {dust.map((p, i) => (
@@ -58,8 +58,13 @@ export default function App() {
           <p style={{ ["--d" as string]: ".5s" }} className="rise mt-3 font-tagline text-[19px] font-medium italic leading-snug text-burgundy sm:text-[22px] md:text-[26px]">“Some things you need aren’t sold in stores.”</p>
         </header>
 
-        <main className="relative z-10 px-3">
+        <main className="relative z-10 flex flex-1 flex-col">
+          <div className="px-3">
           <div style={{ ["--d" as string]: ".25s" }} className="rise relative mx-auto max-w-[580px]">
+            <div className="absolute bottom-0 right-[calc(100%+40px)] hidden lg:block" aria-hidden><Lamp /></div>
+            <div className="absolute right-[calc(100%+30px)] top-[10px] hidden lg:block" aria-hidden><NeonSign /></div>
+            <div className="absolute right-[calc(100%+150px)] top-[110px] hidden xl:block" aria-hidden><TearFlyer /></div>
+            <div className="absolute left-[calc(100%+34px)] top-[20px] hidden lg:block" aria-hidden><Window /></div>
             <div className="absolute -right-[84px] bottom-0 hidden lg:block" aria-hidden>
               <Topiary />
             </div>
@@ -74,12 +79,17 @@ export default function App() {
               onOpenHatch={() => setPanel('hatch')}
             />
           </div>
+          </div>
 
-          <p className="mx-auto mt-5 max-w-[34rem] text-center font-serif text-[15px] font-medium text-charcoal">
+          <div className="ground relative flex-1 px-3 pb-10 pt-6">
+            <div className="street-glow pointer-events-none absolute left-1/2 top-0 h-[160px] w-[760px] max-w-full -translate-x-1/2" aria-hidden />
+            <div className="puddle pointer-events-none absolute left-[calc(50%-190px)] top-[10px] h-[22px] w-[170px]" aria-hidden />
+            <div className="pointer-events-none absolute left-[6%] top-[4px]" aria-hidden><Pigeon /></div>
+          <p className="relative mx-auto mt-5 max-w-[34rem] text-center font-serif text-[15px] font-medium text-charcoal">
             Open 24 hours. No money required. No refunds on existential realizations.
           </p>
 
-          <nav aria-label="Machine extras" style={{ ["--d" as string]: ".7s" }} className="rise mx-auto mt-5 flex max-w-[600px] flex-wrap justify-center gap-2.5">
+          <nav aria-label="Machine extras" style={{ ["--d" as string]: ".7s" }} className="rise relative mx-auto mt-5 flex max-w-[600px] flex-wrap justify-center gap-2.5">
             <button className="btn btn-primary" onClick={() => setPanel('shelf')}>
               <Library size={17} aria-hidden /> MY LITTLE SHELF
               <span className="rounded-full bg-cream px-2 font-display text-xs text-burgundy" aria-label={`${found} of ${ITEMS.length} discovered`}>
@@ -103,9 +113,10 @@ export default function App() {
             </p>
           )}
 
-          <footer className="mx-auto mt-8 max-w-md text-center font-serif text-[13px] leading-relaxed text-charcoal/85">
+          <footer className="relative mx-auto mt-8 max-w-md text-center font-serif text-[13px] leading-relaxed text-charcoal/85">
             A small thing made with care. I don’t know what you’re going through. I am a vending machine. If today is heavier than a vending machine can carry, a person can carry it better. Please talk to one.
           </footer>
+          </div>
         </main>
 
         <AnimatePresence>
