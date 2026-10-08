@@ -48,6 +48,13 @@ export const ITEMS: Item[] = [
   { id: 'duck', cat: 'B', inv: '0687', name: 'Rubber Duck, Consulting', message: 'Explain the problem to the duck. The duck has seen worse.', description: 'Available for debugging, overthinking and light bath-time advice.' },
   { id: 'coupon', cat: 'B', inv: '0413', name: 'Expired Coupon for Free Advice', message: 'Expired in 1997. The advice remains valid: drink some water.', description: 'Not redeemable. The advice, however, is on the house.' },
 
+  // B — photographs
+  { id: 'sundress', cat: 'B', inv: '1001', name: 'Small Figure in a Sundress', message: 'Resigned. Presentable. Ready for whatever you are about to say.', description: 'Standing very still on a ledge, hoping this goes quickly.', image: '/memes/sundress-monkey.jpg' },
+  { id: 'suspenders', cat: 'B', inv: '1002', name: 'Small Employee, Suspenders', message: 'Has reviewed your situation. Not impressed, but willing to help.', description: 'Has been on the same call since nine, and it shows.', image: '/memes/suspender-monkey.jpg' },
+  { id: 'ladybug', cat: 'B', inv: '1003', name: 'Ladybug, Allegedly', message: 'Sometimes you pick a costume and commit.', description: 'Has been given a spot on the leaf. Is not questioning it.', image: '/memes/ladybug-pug.jpg' },
+  { id: 'bigsmile', cat: 'B', inv: '1004', name: 'Large Calm, Small Dog', message: 'One very big feeling and one very small problem. Both are in the picture.', description: 'The large one is serene. The small one has doubts. They coexist.', image: '/memes/big-smile-small-dog.jpg' },
+  { id: 'dumpling', cat: 'B', inv: '1005', name: 'Dumpling, Having a Day', message: 'Cry, then eat something warm. Both count as steps.', description: 'Curled up and tear-streaked, but still soft at heart.', image: '/memes/sad-dumpling.jpg' },
+
   // C — tomorrow
   { id: 'key', cat: 'C', inv: '0750', name: 'Spare Key', message: "For doors you haven't discovered yet.", description: 'Fits no lock you currently own. Keep it somewhere you will find it.' },
   { id: 'ticket', cat: 'C', inv: '0288', name: 'Ticket to Tomorrow', message: 'Valid for one more chance to experience something unexpectedly nice.', description: 'Non-transferable, non-refundable, and surprisingly easy to use.' },
