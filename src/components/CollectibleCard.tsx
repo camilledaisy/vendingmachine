@@ -1,10 +1,11 @@
 import { useState, type ReactNode } from 'react'
-import { motion } from 'motion/react'
-import { Download, Heart, Sparkles } from 'lucide-react'
+import { AnimatePresence, motion } from 'motion/react'
+import { Download, Gamepad2, Heart, Sparkles } from 'lucide-react'
 import { catOf, type Item } from '../data/items'
 import { cardSvg, saveImage } from '../lib/image'
 import { ObjectArt } from './ObjectArt'
 import { Modal } from './Modal'
+import { GAMES, MiniGame } from './MiniGames'
 
 interface Props {
   item: Item
@@ -19,6 +20,7 @@ interface Props {
 export function CollectibleCard({ item, isNew, fav, onFav, onClose, closeLabel = 'Back to the machine', extra }: Props) {
   const cat = catOf(item.cat)
   const [status, setStatus] = useState('')
+  const [playing, setPlaying] = useState(false)
 
   const save = async () => {
     setStatus('Developing the picture…')
@@ -31,6 +33,7 @@ export function CollectibleCard({ item, isNew, fav, onFav, onClose, closeLabel =
   }
 
   return (
+    <>
     <Modal title={`${item.name}. ${item.message}`} onClose={onClose} bare className="max-w-[390px]">
       <motion.article
         initial={{ scale: 0.3, y: 240, rotate: -10, opacity: 0 }}
@@ -62,6 +65,11 @@ export function CollectibleCard({ item, isNew, fav, onFav, onClose, closeLabel =
           <button className="btn" onClick={onFav} aria-pressed={fav}>
             <Heart size={16} aria-hidden fill={fav ? '#914F4F' : 'none'} /> {fav ? 'Favourited' : 'Favourite'}
           </button>
+          {GAMES[item.id] && (
+            <button className="btn" onClick={() => setPlaying(true)}>
+              <Gamepad2 size={16} aria-hidden /> Play with it
+            </button>
+          )}
           <button className="btn" onClick={save}>
             <Download size={16} aria-hidden /> Save image
           </button>
@@ -74,5 +82,7 @@ export function CollectibleCard({ item, isNew, fav, onFav, onClose, closeLabel =
         </p>
       </motion.article>
     </Modal>
+    <AnimatePresence>{playing && <MiniGame id={item.id} onClose={() => setPlaying(false)} />}</AnimatePresence>
+    </>
   )
 }
