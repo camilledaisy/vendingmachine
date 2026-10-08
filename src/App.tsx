@@ -11,7 +11,7 @@ import { CollectionShelf } from './components/CollectionShelf'
 import { MaintenanceLog } from './components/MaintenanceLog'
 import { ReceiptGenerator } from './components/ReceiptGenerator'
 import { HatchNote } from './components/HatchNote'
-import { NeonSign, Pigeon, TearFlyer, Topiary } from './components/Scenery'
+import { NeonSign, Pigeon, Topiary } from './components/Scenery'
 
 type Panel = 'shelf' | 'log' | 'hatch' | 'receipt' | null
 
@@ -96,7 +96,6 @@ export default function App() {
           <div style={{ ["--d" as string]: ".25s" }} className="rise relative mx-auto max-w-[580px]">
             <div className="sky-spill pointer-events-none absolute -inset-x-28 -inset-y-12" aria-hidden />
             <div className="absolute right-[calc(100%+30px)] top-[10px] hidden lg:block" aria-hidden><NeonSign /></div>
-            <div className="absolute right-[calc(100%+150px)] top-[110px] hidden xl:block" aria-hidden><TearFlyer /></div>
             <div className="absolute -right-[84px] bottom-0 hidden lg:block" aria-hidden>
               <Topiary />
             </div>

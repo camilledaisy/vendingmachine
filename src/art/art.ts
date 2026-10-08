@@ -67,45 +67,6 @@ export const ART: Record<string, string> = {
       D(12, 29, 1) + D(12, 35, 1) + D(52, 29, 1) + D(52, 35, 1),
   ),
 
-  // B
-  frog:
-    E(32, 44, 21, 13, G) + E(18, 55, 6, 3.5, G) + E(46, 55, 6, 3.5, G) +
-    E(32, 30, 17, 13, G) +
-    O(22, 19, 6.5, G) + O(42, 19, 6.5, G) + O(22, 19, 3.2, W) + O(42, 19, 3.2, W) + D(22, 19, 1.7) + D(42, 19, 1.7) +
-    O(42, 19, 5.2, 'none', 'stroke="#B8903A" stroke-width="1.4"') + L('M47 22 Q52 30 50 40', 'stroke="#B8903A" stroke-width="1"') +
-    L('M22 34 Q32 40 42 34') +
-    O(19, 30, 2.5, R, 'stroke="none"') + O(45, 30, 2.5, R, 'stroke="none"') +
-    L('M15 42 Q17 36 23 36', 'stroke="#fff" stroke-width="2" opacity=".6"'),
-  complaint:
-    Rt(13, 5, 38, 52, W, 3) +
-    L('M19 13 H41', 'stroke-width="3"') +
-    L('M19 20 H45 M19 25 H45', 'stroke-width="1.2" opacity=".55"') +
-    Rt(19, 31, 6, 6, 'none', 1) + L('M20 34 l2 2 l4 -5', `stroke="${B}"`) + L('M29 34 H45', 'stroke-width="1.2" opacity=".55"') +
-    Rt(19, 41, 6, 6, 'none', 1) + L('M20 44 l2 2 l4 -5', `stroke="${B}"`) + L('M29 44 H42', 'stroke-width="1.2" opacity=".55"') +
-    L('M19 53 q4 -6 8 0 t8 -2', `stroke="${B}" stroke-width="1.4"`),
-  trophy:
-    L('M20 13 Q7 12 10 25 Q12 31 21 31') + L('M44 13 Q57 12 54 25 Q52 31 43 31') +
-    P('M20 8 H44 V25 Q44 38 32 38 Q20 38 20 25Z', Y) +
-    Rt(29, 38, 6, 8, Y, 1) + Rt(21, 46, 22, 10, B, 2) +
-    P('M32 13 L34 19 L40 19 L35 23 L37 29 L32 25 L27 29 L29 23 L24 19 L30 19Z', C, 'stroke-width="1.2"'),
-  spoon:
-    L('M12 12 Q8 18 12 24 M52 10 Q56 16 52 22', `stroke="${G}" stroke-width="1.8"`) +
-    Rt(29, 34, 6, 24, '#D9D3C4', 3) + E(32, 20, 13, 16, '#D9D3C4') +
-    O(27, 17, 2.6, W) + O(37, 17, 2.6, W) + D(27, 17.5, 1.2) + D(37, 17.5, 1.2) +
-    E(32, 26, 2.4, 3, K, 'stroke="none"'),
-  duck:
-    waves(57) +
-    P('M10 41 Q4 36 10 33 Q14 36 15 41Z', Y) +
-    E(30, 44, 20, 12, Y) + O(42, 24, 11, Y) +
-    P('M51 22 H61 Q60 29 51 28Z', '#E8A25A') + D(45, 21, 1.7) +
-    P('M18 43 Q26 36 34 45 Q26 51 18 43Z', '#E8C768', 'stroke-width="1.5"'),
-  coupon: G_(
-    'rotate(-5 32 32)',
-    Rt(6, 14, 52, 34, Y, 3, 'stroke-dasharray="4 3"') + T(24, 33, 13, 'FREE') +
-      L('M11 40 H30 M11 20 H28', 'stroke-width="1.2" opacity=".5"') +
-      G_('rotate(-14 44 40)', Rt(30, 33, 27, 11, 'none', 2, `stroke="${B}" stroke-width="1.5"`) + T(43.5, 41.5, 7, 'EXPIRED', B)),
-  ),
-
   // C
   key: G_(
     'rotate(30 32 32)',

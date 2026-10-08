@@ -75,22 +75,6 @@ export const NeonSign = () => (
   </div>
 )
 
-export const TearFlyer = () => (
-  <div className="paper w-[118px] rotate-[3deg] border-2 border-charcoal pt-2 text-center shadow-md" aria-hidden>
-    <span className="mx-auto mb-1 block h-2.5 w-9 -rotate-2 bg-rose/80" />
-    <p className="font-display text-[15px] font-bold leading-none text-burgundy">FREE</p>
-    <p className="px-1 font-hand text-[19px] font-bold leading-[1] text-charcoal">strong feelings.</p>
-    <p className="font-hand text-[15px] leading-none text-charcoal/80">take one</p>
-    <div className="mt-2 flex h-[54px] border-t-2 border-dashed border-charcoal/60">
-      {[1, 1, 0, 1, 0, 1].map((on, i) => (
-        <span key={i} className={`flex-1 border-r border-dashed border-charcoal/40 text-center font-hand text-[11px] leading-none text-charcoal ${on ? '' : 'invisible'}`} style={{ writingMode: 'vertical-rl' }}>
-          take one
-        </span>
-      ))}
-    </div>
-  </div>
-)
-
 export const Pigeon = () => (
   <div className="pigeon-walk" aria-hidden>
     <svg viewBox="0 0 48 36" width="48" height="36" className="overflow-visible">

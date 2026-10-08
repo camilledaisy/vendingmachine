@@ -24,7 +24,7 @@ export interface Item {
 
 export const CATEGORIES: Category[] = [
   { id: 'A', code: 'A01', label: 'A little reassurance', quip: 'Checking inventory of small comforts.', art: 'jar' },
-  { id: 'B', code: 'B02', label: 'Something to laugh at', quip: 'Humour is stocked on the second shelf.', art: 'frog' },
+  { id: 'B', code: 'B02', label: 'Something to laugh at', quip: 'Humour is stocked on the second shelf.', art: 'dumpling' },
   { id: 'C', code: 'C03', label: 'A reason to look forward to tomorrow', quip: 'Tomorrow has been notified.', art: 'ticket' },
   { id: 'D', code: 'D04', label: 'To feel understood', quip: 'I will do my best. I am a vending machine.', art: 'receipt' },
   { id: 'E', code: 'E05', label: 'A distraction', quip: 'Excellent. Something else to look at.', art: 'marble' },
@@ -39,14 +39,6 @@ export const ITEMS: Item[] = [
   { id: 'nightlight', cat: 'A', inv: '0871', name: 'Plug-In Night Light', message: 'Not a solution. Just something that stays on while you work it out.', description: 'Warm amber glow. Has never once asked how you are doing.' },
   { id: 'sock', cat: 'A', inv: '0159', name: 'One Warm Sock', message: 'Missing its pair, still doing its job. Take notes.', description: 'Lightly darned. Smells faintly of toast. Fits whichever foot needs it.' },
   { id: 'bandage', cat: 'A', inv: '0905', name: 'Emotional Plaster', message: "Doesn't fix anything. Does let everyone know you're working on it.", description: 'Extra sticky. Pattern: tiny dots, discreet but sincere.' },
-
-  // B — laugh
-  { id: 'frog', cat: 'B', inv: '0318', name: 'Miniature Ceramic Frog', message: 'I have reviewed the situation. You may proceed.', description: 'Glazed, serious, and wearing a monocle for reasons of its own.' },
-  { id: 'complaint', cat: 'B', inv: '0764', name: 'Pre-Filled Complaint Form', message: 'Dear universe: this was not what I ordered. Sincerely, everyone.', description: 'Already signed. Please submit to any available cosmic department.' },
-  { id: 'trophy', cat: 'B', inv: '0526', name: 'Trophy for Attending', message: 'That meeting could have been an email. You were there anyway. Honour.', description: 'Gold-ish. Engraved with the word "present", and nothing else.' },
-  { id: 'spoon', cat: 'B', inv: '0092', name: 'Slightly Haunted Spoon', message: "It's friendly. It just stirs things at odd hours.", description: 'Found in a drawer that wasn\'t there yesterday. Excellent with soup.' },
-  { id: 'duck', cat: 'B', inv: '0687', name: 'Rubber Duck, Consulting', message: 'Explain the problem to the duck. The duck has seen worse.', description: 'Available for debugging, overthinking and light bath-time advice.' },
-  { id: 'coupon', cat: 'B', inv: '0413', name: 'Expired Coupon for Free Advice', message: 'Expired in 1997. The advice remains valid: drink some water.', description: 'Not redeemable. The advice, however, is on the house.' },
 
   // B — photographs
   { id: 'sundress', cat: 'B', inv: '1001', name: 'Small Figure in a Sundress', message: 'Resigned. Presentable. Ready for whatever you are about to say.', description: 'Standing very still on a ledge, hoping this goes quickly.', image: '/memes/sundress-monkey.jpg' },
