@@ -59,6 +59,12 @@ export const ITEMS: Item[] = [
   { id: 'snailmonkey', cat: 'B', inv: '1007', name: 'Sponge-Adjacent Neighbour', message: 'Do not ask. Just wave back.', description: 'Appeared from the background with feelers and no explanation.', image: '/memes/snail-monkey.jpg' },
   { id: 'heartbear', cat: 'B', inv: '1008', name: 'Bear with a Heart', message: 'Is giving you the heart. Is also judging you a little.', description: 'Soft, sincere, and watching how you take it.', image: '/memes/heart-bear.jpg' },
 
+  { id: 'shouting', cat: 'B', inv: '1009', name: 'Green Creature, Shouting', message: 'A very loud green creature with arms out wide.', description: 'Photo item.', image: '/memes/shouting-green.jpg' },
+  { id: 'cryingpotato', cat: 'B', inv: '1010', name: 'Crying Potato', message: 'A small potato crying with great commitment.', description: 'Photo item.', image: '/memes/crying-potato.jpg' },
+  { id: 'dumplinghat', cat: 'B', inv: '1011', name: 'Dumpling-Hatted Baby', message: 'A calm green baby wearing a dumpling as a hood.', description: 'Photo item.', image: '/memes/dumpling-hat.jpg' },
+  { id: 'toiletpotato', cat: 'B', inv: '1012', name: 'Potato on a Toilet', message: 'A worried potato sitting on a toilet.', description: 'Photo item.', image: '/memes/toilet-potato.jpg' },
+  { id: 'banana', cat: 'B', inv: '1013', name: 'Banana in a Bow Tie', message: 'A felt banana with a face and a striped bow tie.', description: 'Photo item.', image: '/memes/banana-bowtie.jpg' },
+
   // C — tomorrow
   { id: 'key', cat: 'C', inv: '0750', name: 'Spare Key', message: "For doors you haven't discovered yet.", description: 'Fits no lock you currently own. Keep it somewhere you will find it.' },
   { id: 'ticket', cat: 'C', inv: '0288', name: 'Ticket to Tomorrow', message: 'Valid for one more chance to experience something unexpectedly nice.', description: 'Non-transferable, non-refundable, and surprisingly easy to use.' },
