@@ -19,16 +19,16 @@ export function MachineDisplay({ lines, error, asleep, onWake, instant }: { line
       <span className="sr-only">
         {lines[0]} {lines[1]}
       </span>
-      <span aria-hidden className={`block text-[25px] leading-[1.05] ${error ? 'text-rose' : 'text-butter'}`}>
+      <span aria-hidden className={`block text-[22px] leading-[1.05] md:text-[25px] ${error ? 'text-rose' : 'text-butter'}`}>
         {l1}
         <span className="cursor" />
       </span>
-      <span aria-hidden className="mt-1 block text-[20px] leading-[1.05] text-sage">
+      <span aria-hidden className="mt-0.5 block text-[18px] md:mt-1 md:text-[20px] leading-[1.05] text-sage">
         {l2}
       </span>
     </>
   )
-  const cls = `lcd font-lcd relative block min-h-[90px] w-full rounded-lg border-[3px] border-charcoal px-4 py-3 text-left ${error ? 'lcd-error' : ''} ${asleep ? 'lcd-asleep' : ''}`
+  const cls = `lcd font-lcd relative block min-h-[76px] md:min-h-[90px] w-full rounded-lg border-[3px] border-charcoal px-3 py-2 text-left md:px-4 md:py-3 ${error ? 'lcd-error' : ''} ${asleep ? 'lcd-asleep' : ''}`
   return asleep ? (
     <button onClick={onWake} className={`${cls} cursor-pointer`} aria-label="Wake the machine. Touch to begin.">
       {body}

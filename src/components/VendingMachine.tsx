@@ -212,7 +212,7 @@ export function VendingMachine({ owned, favs, reduced, birthday, onCollect, onTo
             <MachineDisplay lines={msg} error={err} asleep={phase === 'idle'} onWake={wake} instant={reduced} />
           </div>
 
-          <div className="mt-3 flex items-stretch gap-3">
+          <div className="mt-2.5 flex flex-col items-stretch gap-2.5 md:mt-3 md:flex-row md:gap-3">
             <CategorySelector
               selected={sel}
               taken={taken}
@@ -222,31 +222,31 @@ export function VendingMachine({ owned, favs, reduced, birthday, onCollect, onTo
               setRef={(id, el) => (cells.current[id] = el)}
             />
             {/* control panel */}
-            <div className="panel flex w-[96px] shrink-0 flex-col items-center gap-2.5 rounded-lg border-[3px] border-charcoal bg-cream p-2 md:w-[132px]">
-              <span className="font-display text-[11px] font-bold tracking-widest text-charcoal">SELECT</span>
-              <div className="grid grid-cols-2 gap-1.5" aria-hidden>
+            <div className="panel flex shrink-0 items-center gap-3 rounded-lg border-[3px] border-charcoal bg-cream p-2 md:w-[132px] md:flex-col md:gap-2.5">
+              <span className="hidden font-display text-[11px] font-bold tracking-widest text-charcoal md:block">SELECT</span>
+              <div className="hidden grid-cols-2 gap-1.5 md:grid" aria-hidden>
                 {CATEGORIES.map((c) => (
                   <button key={c.id} tabIndex={-1} onClick={() => select(c.id)} className={`key ${sel === c.id ? 'key-on' : ''}`}>
                     {c.code}
                   </button>
                 ))}
               </div>
-              <div className="w-full text-center">
+              <div className="hidden w-full text-center md:block">
                 <div className="mx-auto h-[7px] w-10 rounded-full border-2 border-charcoal bg-charcoal shadow-[inset_0_2px_0_rgba(0,0,0,.6)]" aria-hidden />
                 <span className="mt-1 block font-display text-[10px] leading-tight text-charcoal/80">COINS: NOT REQUIRED</span>
               </div>
-              <button className="dispense mt-auto w-full" onClick={dispense} aria-disabled={!sel || busy} aria-describedby="dispense-help">
+              <button className="dispense w-full md:mt-auto" onClick={dispense} aria-disabled={!sel || busy} aria-describedby="dispense-help">
                 DISPENSE
               </button>
               <span id="dispense-help" className="sr-only">
                 Choose a compartment first.
               </span>
-              <button onClick={onOpenHatch} aria-label="A small hatch" className="hatch" />
+              <button onClick={onOpenHatch} aria-label="A small hatch" className="hatch hidden md:block" />
             </div>
           </div>
 
           {/* tray */}
-          <div ref={tray} className="tray relative mt-3 h-[80px] overflow-hidden rounded-lg border-[3px] border-charcoal bg-charcoal">
+          <div ref={tray} className="tray relative mt-2.5 h-[68px] overflow-hidden md:mt-3 md:h-[70px] rounded-lg border-[3px] border-charcoal bg-charcoal">
             <AnimatePresence>
               {phase === 'delivered' && item && (
                 <motion.button
@@ -278,8 +278,8 @@ export function VendingMachine({ owned, favs, reduced, birthday, onCollect, onTo
           </div>
 
           {/* kick plate with the note */}
-          <div className="kick mt-3 flex items-center justify-center rounded-md border-[3px] border-charcoal px-3 pb-3 pt-5">
-            <p className="note relative rotate-[-2deg] px-6 pb-5 pt-6 text-center font-note text-[22px] leading-[1.15] text-charcoal sm:text-[24px]">
+          <div className="kick mt-2.5 flex items-center justify-center rounded-md border-[3px] border-charcoal px-2 pb-2 pt-3.5 md:px-3 md:pb-2.5 md:pt-4">
+            <p className="note relative rotate-[-2deg] px-6 pb-3 pt-4 text-center font-note text-[21px] leading-[1.1] text-charcoal md:text-[22px]">
               <span className="pin" aria-hidden />
               Please be gentle with the machine.
               <br />

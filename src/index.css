@@ -95,8 +95,8 @@ body {
 
   /* panel */
   .key {
-    @apply rounded border-2 border-charcoal bg-sage font-display text-[11px] font-bold leading-none text-charcoal;
-    width: 36px; height: 30px; box-shadow: 0 3px 0 #403B36; cursor: pointer;
+    @apply rounded border-2 border-charcoal bg-sage font-display text-[10px] font-bold leading-none text-charcoal;
+    width: 100%; min-width: 30px; height: 28px; box-shadow: 0 3px 0 #403B36; cursor: pointer;
   }
   .key:active { transform: translateY(2px); box-shadow: 0 1px 0 #403B36; }
   .key-on { background: #F2D98D; box-shadow: 0 1px 0 #403B36; transform: translateY(2px); }

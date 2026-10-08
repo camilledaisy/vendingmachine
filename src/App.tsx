@@ -51,7 +51,7 @@ export default function App() {
           </div>
         )}
 
-        <header className="relative z-10 px-4 pb-12 pt-5 text-center">
+        <header className="relative z-10 px-4 pb-11 pt-4 text-center">
           <h1 className="paper mx-auto inline-block max-w-[92vw] -rotate-[0.6deg] border-[3px] border-burgundy px-5 py-3 font-display text-[22px] font-bold leading-tight tracking-wide text-charcoal shadow-[4px_5px_0_rgba(64,59,54,.3)] sm:text-4xl md:text-[36px]">
             THE EMOTIONAL VENDING MACHINE
           </h1>
