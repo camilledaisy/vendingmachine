@@ -55,7 +55,7 @@ export default function App() {
           <h1 className="drop-in paper mx-auto inline-block max-w-[92vw] -rotate-[0.6deg] border-[3px] border-burgundy px-5 py-3 font-display text-[22px] font-bold leading-tight tracking-wide text-charcoal shadow-[4px_5px_0_rgba(64,59,54,.3)] sm:text-4xl md:text-[36px]">
             THE EMOTIONAL VENDING MACHINE
           </h1>
-          <p style={{ ["--d" as string]: ".5s" }} className="rise mt-3 font-tagline text-[19px] leading-snug text-burgundy sm:text-[22px] md:text-[25px]">“Some things you need aren’t sold in stores.”</p>
+          <p style={{ ["--d" as string]: ".5s" }} className="rise mt-3 font-tagline text-[19px] font-medium italic leading-snug text-burgundy sm:text-[22px] md:text-[26px]">“Some things you need aren’t sold in stores.”</p>
         </header>
 
         <main className="relative z-10 px-3">
