@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:embed": "tsc --noEmit && vite build --base=/play/emotional-vending-machine/ --outDir dist-embed"
   },
   "repository": {
     "type": "git",

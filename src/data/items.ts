@@ -111,6 +111,9 @@ export const ITEMS: Item[] = [
   { id: 'egg', cat: 'F', inv: '0780', name: 'Egg, Unexplained', message: 'We do not know what is inside either. Welcome to the club.', description: 'Speckled, warm to the touch, and entirely uncommitted.' },
 ]
 
+// Photos live in public/memes. Prefix them with the app's base path so it also works when hosted in a sub-folder.
+for (const i of ITEMS) if (i.image) i.image = import.meta.env.BASE_URL + i.image.replace(/^\//, '')
+
 export const byId = (id: string) => ITEMS.find((i) => i.id === id)
 export const catOf = (id: CatId) => CATEGORIES.find((c) => c.id === id)!
 
