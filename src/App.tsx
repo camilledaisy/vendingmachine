@@ -9,7 +9,7 @@ import { CollectionShelf } from './components/CollectionShelf'
 import { MaintenanceLog } from './components/MaintenanceLog'
 import { ReceiptGenerator } from './components/ReceiptGenerator'
 import { HatchNote } from './components/HatchNote'
-import { Flyer, Topiary } from './components/Scenery'
+import { Topiary } from './components/Scenery'
 
 type Panel = 'shelf' | 'log' | 'hatch' | 'receipt' | null
 
@@ -62,9 +62,6 @@ export default function App() {
           <div className="relative mx-auto max-w-[580px]">
             <div className="absolute -right-[84px] bottom-0 hidden lg:block" aria-hidden>
               <Topiary />
-            </div>
-            <div className="absolute -left-[130px] top-[170px] hidden lg:block">
-              <Flyer />
             </div>
             <VendingMachine
               owned={saved.owned}

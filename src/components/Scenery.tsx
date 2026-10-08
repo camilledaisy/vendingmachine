@@ -60,12 +60,3 @@ export const Topiary = () => (
     </g>
   </svg>
 )
-
-export const Flyer = () => (
-  <div className="paper w-[96px] rotate-[-4deg] border-2 border-charcoal p-2 text-center font-hand text-[17px] leading-[1.05] text-charcoal shadow-md" aria-hidden>
-    <span className="mx-auto mb-1 block h-2 w-8 rotate-3 bg-butter/80" />
-    LOST: one sock.
-    <br />
-    Reward: a different sock.
-  </div>
-)
