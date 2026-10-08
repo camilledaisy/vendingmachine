@@ -206,7 +206,14 @@ export function VendingMachine({ owned, favs, reduced, birthday, onCollect, onTo
           <i key={i} aria-hidden className="heart-float not-italic" style={{ left: 62 + i * 12, ['--d' as string]: `${d}s` }}>♥</i>
         ))}
       </button>
-      {birthday && <PartyHat className="absolute -top-[34px] right-[18%] z-10 rotate-6" />}
+      <button
+        className="potato absolute -top-[47px] right-5 z-10 cursor-pointer md:right-8"
+        aria-label="A potato, lying down"
+        onClick={() => say('That is a potato.', 'It lives here now. Nobody discussed it.')}
+      >
+        <img src="/potato.png" alt="" width="64" draggable={false} />
+      </button>
+      {birthday && <PartyHat className="absolute -top-[34px] right-[34%] z-10 rotate-6" />}
 
       <div className="flex">
         <div className="machine-body paper-overlay relative min-w-0 flex-1 rounded-tl-[26px] border-[4px] border-r-0 border-charcoal bg-sage p-3 md:p-4">

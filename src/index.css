@@ -144,6 +144,8 @@ body {
 }
 
 .dust { position: absolute; border-radius: 50%; background: #F5EEDF; opacity: 0; animation: drift linear infinite; }
+.potato { transform-origin: 50% 100%; animation: potato 5s ease-in-out infinite; }
+.potato:active { transform: rotate(8deg); }
 .cat-tail { transform-box: fill-box; transform-origin: 100% 100%; animation: tail 3.8s ease-in-out infinite; }
 .cat-breath { transform-box: fill-box; transform-origin: 50% 100%; animation: breathe 4.2s ease-in-out infinite; }
 .cat-head { animation: nod 4.2s ease-in-out infinite; }
@@ -155,6 +157,7 @@ body {
 .bob { display: inline-block; animation: float 1.6s ease-in-out infinite; }
 .shake { animation: shake .5s linear 3; }
 
+@keyframes potato { 0%,100% { transform: rotate(-2deg) scale(1,1) } 50% { transform: rotate(-2deg) scale(1.015,1.04) } }
 @keyframes tail { 0%,100% { transform: rotate(-7deg) } 50% { transform: rotate(9deg) } }
 @keyframes breathe { 0%,100% { transform: scale(1,1) } 50% { transform: scale(1.01,1.06) } }
 @keyframes nod { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-1px) } }
