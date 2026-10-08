@@ -71,6 +71,11 @@ export const ITEMS: Item[] = [
   { id: 'hearteyes', cat: 'B', inv: '1017', name: 'Drawn Monkey, Heart Eyes', message: 'A cartoon monkey with pink hearts for eyes.', description: 'Photo item.', image: '/memes/heart-eyes-monkey.jpg' },
   { id: 'lipsmonkey', cat: 'B', inv: '1018', name: 'Drawn Monkey, Realistic Face', message: 'A cartoon monkey with a strangely realistic face and pursed lips.', description: 'Photo item.', image: '/memes/lips-monkey.jpg' },
 
+  { id: 'tonguemonkey', cat: 'B', inv: '1019', name: 'Drawn Monkey, Tongue Out', message: 'A cartoon monkey with its tongue fully out.', description: 'Photo item.', image: '/memes/tongue-monkey.jpg' },
+  { id: 'plushgorilla', cat: 'B', inv: '1020', name: 'Plush Gorilla, Concerned', message: 'A fluffy brown gorilla toy glancing sideways.', description: 'Photo item.', image: '/memes/plush-gorilla.jpg' },
+  { id: 'eggbaby', cat: 'B', inv: '1021', name: 'Sprout Baby in an Eggshell', message: 'A sleepy sprout-headed baby holding a four-leaf clover.', description: 'Photo item.', image: '/memes/egg-baby.jpg' },
+  { id: 'sunsetbaby', cat: 'B', inv: '1022', name: 'Long-Eared Baby at Sunset', message: 'A long-eared baby gazing at the sunset.', description: 'Photo item.', image: '/memes/sunset-baby.jpg' },
+
   // C — tomorrow
   { id: 'key', cat: 'C', inv: '0750', name: 'Spare Key', message: "For doors you haven't discovered yet.", description: 'Fits no lock you currently own. Keep it somewhere you will find it.' },
   { id: 'ticket', cat: 'C', inv: '0288', name: 'Ticket to Tomorrow', message: 'Valid for one more chance to experience something unexpectedly nice.', description: 'Non-transferable, non-refundable, and surprisingly easy to use.' },
