@@ -50,7 +50,7 @@ export function CollectibleCard({ item, isNew, fav, onFav, onClose, closeLabel =
           </div>
           <div className="card-art relative mt-3 flex items-center justify-center rounded-lg border-2 border-charcoal bg-sage py-5">
             {item.image ? (
-              <img src={item.image} alt={item.name} className="max-h-[280px] w-auto max-w-[92%] -rotate-1 rounded border-[6px] border-cream bg-cream object-contain shadow-md" />
+              <img src={item.image} alt={item.name} className="max-h-[360px] w-auto max-w-[92%] -rotate-1 rounded border-[6px] border-cream bg-cream object-contain shadow-md" />
             ) : (
               <ObjectArt id={item.id} name={item.name} size={168} className="float" />
             )}
@@ -60,9 +60,17 @@ export function CollectibleCard({ item, isNew, fav, onFav, onClose, closeLabel =
               </span>
             )}
           </div>
-          <h2 className="mt-4 text-center font-display text-[26px] font-bold leading-tight text-charcoal">{item.name}</h2>
-          <p className="mt-2 text-center font-serif text-[19px] font-medium italic leading-snug text-charcoal">“{item.message}”</p>
-          <p className="mt-3 text-center font-serif text-[14px] leading-snug text-charcoal/80">{item.description}</p>
+          {item.image ? (
+            <h2 className="sr-only">
+              {item.name}. {item.message}
+            </h2>
+          ) : (
+            <>
+              <h2 className="mt-4 text-center font-display text-[26px] font-bold leading-tight text-charcoal">{item.name}</h2>
+              <p className="mt-2 text-center font-serif text-[19px] font-medium italic leading-snug text-charcoal">“{item.message}”</p>
+              <p className="mt-3 text-center font-serif text-[14px] leading-snug text-charcoal/80">{item.description}</p>
+            </>
+          )}
         </div>
         {extra}
         <div className="mt-4 flex flex-wrap justify-center gap-2">

@@ -42,13 +42,14 @@ export async function cardSvg(item: Item) {
   let art = `<g transform="translate(175 138) scale(4.1)">${artMarkup(item.id)}</g>`
   if (item.image) {
     const { uri, w, h } = await toDataUri(item.image)
-    const k = Math.min(350 / w, 260 / h)
-    art = `<image href="${uri}" x="${300 - (w * k) / 2}" y="${253 - (h * k) / 2}" width="${w * k}" height="${h * k}"/>`
+    const k = Math.min(400 / w, 480 / h)
+    art = `<image href="${uri}" x="${300 - (w * k) / 2}" y="${363 - (h * k) / 2}" width="${w * k}" height="${h * k}"/>`
   }
   const cat = catOf(item.cat)
   const name = wrap(item.name, 20)
   const msg = wrap(item.message, 30)
   const desc = wrap(item.description, 52)
+  const photo = !!item.image
   let y = 440
   const nameSvg = lines(name, 300, y, 40, 'font-family="Georgia,serif" font-size="34" font-weight="700" fill="#403B36"')
   y += name.length * 40 + 14
@@ -56,7 +57,7 @@ export async function cardSvg(item: Item) {
   y += msg.length * 36 + 14
   const descSvg = lines(desc, 300, y, 24, 'font-family="Georgia,serif" font-size="17" fill="#5a534b"')
   y += desc.length * 24 + 30
-  const h = Math.max(y + 60, 780)
+  const h = photo ? 720 : Math.max(y + 60, 780)
   return {
     w: 600,
     h,
@@ -65,9 +66,9 @@ export async function cardSvg(item: Item) {
 <rect x="14" y="14" width="572" height="${h - 28}" rx="18" fill="none" stroke="#914F4F" stroke-width="3" stroke-dasharray="10 6"/>
 <text x="300" y="58" text-anchor="middle" font-family="Courier New,monospace" font-size="15" letter-spacing="3" fill="#914F4F">THE EMOTIONAL VENDING MACHINE</text>
 <text x="300" y="84" text-anchor="middle" font-family="Courier New,monospace" font-size="14" fill="#403B36">${cat.code} · ${esc(cat.label)}</text>
-<rect x="110" y="108" width="380" height="290" rx="20" fill="#A3B18A" stroke="#403B36" stroke-width="3"/>
+<rect x="${photo ? 70 : 110}" y="108" width="${photo ? 460 : 380}" height="${photo ? 510 : 290}" rx="20" fill="#A3B18A" stroke="#403B36" stroke-width="3"/>
 ${art}
-${nameSvg}${msgSvg}${descSvg}
+${photo ? '' : nameSvg + msgSvg + descSvg}
 <text x="300" y="${h - 36}" text-anchor="middle" font-family="Courier New,monospace" font-size="15" fill="#914F4F">ITEM No. ${item.inv}</text>
 </svg>`,
   }
