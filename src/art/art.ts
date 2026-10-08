@@ -26,6 +26,13 @@ const bt = (cx: number, cy: number, r: number, f: string, four: boolean) =>
 const waves = (y: number) => L(`M2 ${y} Q8 ${y - 4} 14 ${y} T26 ${y} T38 ${y} T50 ${y} T62 ${y}`, `stroke="${GREEN}"`)
 
 export const ART: Record<string, string> = {
+  // the mystery parcel handed out by F06
+  parcel:
+    Rt(8, 18, 48, 38, '#C9A56B', 3) + L('M8 30 H56', 'stroke-width="1.2" opacity=".35"') +
+    L('M32 18 V56 M8 37 H56', `stroke="${B}" stroke-width="2.5"`) +
+    P('M32 18 Q22 6 18 14 Q18 22 32 18 Q46 22 46 14 Q42 6 32 18Z', R, 'stroke-width="1.8"') +
+    Rt(40, 40, 12, 9, C, 1, 'stroke-width="1.4"') + T(46, 47, 6, '?'),
+
   // A
   star:
     P('M32 5 L39 23 L58 24 L43 36 L48 56 L32 45 L16 56 L21 37 L6 25 L25 23Z', Y) +

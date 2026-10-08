@@ -8,6 +8,7 @@ import { MachineDisplay } from './MachineDisplay'
 import { CategorySelector } from './CategorySelector'
 import { DispensingAnimation, type Pt } from './DispensingAnimation'
 import { CollectibleCard } from './CollectibleCard'
+import { ParcelUnwrap } from './ParcelUnwrap'
 import { ObjectArt } from './ObjectArt'
 import { Cat, PartyHat } from './Scenery'
 
@@ -38,6 +39,9 @@ export function VendingMachine({ owned, favs, reduced, birthday, onCollect, onTo
   const [taken, setTaken] = useState<CatId | null>(null)
   const [trayOpen, setTrayOpen] = useState(false)
   const [announce, setAnnounce] = useState('')
+  const [parcel, setParcel] = useState(false) // F06 hands over a wrapped parcel
+  const [opened, setOpened] = useState(false)
+  const parcelRef = useRef(false)
   const root = useRef<HTMLDivElement>(null)
   const tray = useRef<HTMLDivElement>(null)
   const cells = useRef<Partial<Record<CatId, HTMLButtonElement | null>>>({})
@@ -80,8 +84,8 @@ export function VendingMachine({ owned, favs, reduced, birthday, onCollect, onTo
     setAnnounce(`${c.code}, ${c.label}, selected. Press Dispense when ready.`)
   }
 
-  const choose = (cat: CatId): Item => {
-    const all = ITEMS.filter((i) => i.cat === cat)
+  const choose = (cat: CatId | null): Item => {
+    const all = cat ? ITEMS.filter((i) => i.cat === cat) : ITEMS
     const fresh = all.filter((i) => !owned[i.id])
     let pool = fresh.length && Math.random() < 0.7 ? fresh : all
     if (pool.length > 1) pool = pool.filter((i) => i.id !== last.current)
@@ -96,7 +100,11 @@ export function VendingMachine({ owned, favs, reduced, birthday, onCollect, onTo
       const [a, b] = pick(SELECT_HINTS)
       return say(a, b)
     }
-    const it = choose(sel)
+    const isParcel = sel === 'F'
+    parcelRef.current = isParcel
+    setParcel(isParcel)
+    setOpened(false)
+    const it = choose(isParcel ? null : sel)
     last.current = it.id
     setItem(it)
     setPhase('dispensing')
@@ -115,8 +123,8 @@ export function VendingMachine({ owned, favs, reduced, birthday, onCollect, onTo
       }, reduced ? 1200 : 1700)
       t = reduced ? 2300 : 3100
     }
-    const a = pick(PLAYFUL_LINES)
-    const b = pick(PLAYFUL_LINES.filter((l) => l !== a))
+    const a: readonly string[] = isParcel ? ['Neither do I.', "Let's find out."] : pick(PLAYFUL_LINES)
+    const b: readonly string[] = isParcel ? ['Wrapping something up.', 'Please do not look.'] : pick(PLAYFUL_LINES.filter((l) => l !== a))
     const step = reduced ? 0.5 : 1
     later(() => say(a[0], a[1]), t)
     later(() => {
@@ -138,7 +146,7 @@ export function VendingMachine({ owned, favs, reduced, birthday, onCollect, onTo
     setFall(null)
     sfx.clunk()
     setTrayOpen(true)
-    const d = pick(DELIVERED_LINES)
+    const d: readonly string[] = parcelRef.current ? ['One parcel, contents unknown.', 'Even to me. Mostly.'] : pick(DELIVERED_LINES)
     say(d[0], d[1])
     later(() => {
       setPhase('delivered')
@@ -148,10 +156,16 @@ export function VendingMachine({ owned, favs, reduced, birthday, onCollect, onTo
 
   const collect = () => {
     if (!item) return
-    setIsNew(onCollect(item))
     setPhase('revealed')
+    if (parcel) return setAnnounce('You pick up the parcel. Activate "Pull the string" to open it.')
+    reveal(item)
+  }
+
+  const reveal = (it: Item) => {
+    setIsNew(onCollect(it))
+    setOpened(true)
     sfx.chime()
-    setAnnounce(`You received ${item.name}. ${item.message}`)
+    setAnnounce(`You received ${it.name}. ${it.message}`)
   }
 
   const closeCard = () => {
@@ -159,6 +173,8 @@ export function VendingMachine({ owned, favs, reduced, birthday, onCollect, onTo
     setSel(null)
     setItem(null)
     setTaken(null)
+    setParcel(false)
+    setOpened(false)
     setTrayOpen(false)
     say('Thank you for visiting.', 'I hope the rest of your day is at least moderately pleasant.')
     later(() => cells.current.A?.focus(), 60)
@@ -241,10 +257,10 @@ export function VendingMachine({ owned, favs, reduced, birthday, onCollect, onTo
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ opacity: 0, scale: 0.6 }}
                   className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-0.5 rounded-md"
-                  aria-label={`Collect item: ${item.name}`}
+                  aria-label={`Collect item: ${parcel ? 'mystery parcel' : item.name}`}
                 >
                   <span className={reduced ? '' : 'bob'}>
-                    <ObjectArt id={item.id} size={56} />
+                    <ObjectArt id={parcel ? 'parcel' : item.id} size={56} />
                   </span>
                   <span className="rounded bg-butter px-2 font-display text-[11px] font-bold text-charcoal">CLICK TO COLLECT</span>
                 </motion.button>
@@ -284,9 +300,10 @@ export function VendingMachine({ owned, favs, reduced, birthday, onCollect, onTo
         <i className="h-3 w-12 rounded-b bg-charcoal" />
       </div>
 
-      {fall && sel && <DispensingAnimation art={catItemArt(item)} from={fall.from} to={fall.to} onLand={land} />}
+      {fall && sel && <DispensingAnimation art={parcel ? 'parcel' : catItemArt(item)} from={fall.from} to={fall.to} onLand={land} />}
       <AnimatePresence>
-        {phase === 'revealed' && item && (
+        {phase === 'revealed' && item && parcel && !opened && <ParcelUnwrap key="parcel" reduced={reduced} onOpen={() => reveal(item)} />}
+        {phase === 'revealed' && item && (!parcel || opened) && (
           <CollectibleCard item={item} isNew={isNew} fav={favs.includes(item.id)} onFav={() => onToggleFav(item.id)} onClose={closeCard} />
         )}
       </AnimatePresence>
