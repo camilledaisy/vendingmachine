@@ -207,7 +207,7 @@ export function VendingMachine({ owned, favs, reduced, birthday, onCollect, onTo
         ))}
       </button>
       <button
-        className="potato absolute -top-[52px] right-5 z-10 cursor-pointer md:right-8"
+        className="potato absolute -top-[45px] right-5 z-0 cursor-pointer md:right-8"
         aria-label="A potato, lying down"
         onClick={() => say('That is a potato.', 'It lives here now. Nobody discussed it.')}
       >
