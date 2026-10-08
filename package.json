@@ -1,0 +1,35 @@
+{
+  "name": "emotional-vending-machine",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/camilledaisy/vendingmachine.git"
+  },
+  "bugs": {
+    "url": "https://github.com/camilledaisy/vendingmachine/issues"
+  },
+  "homepage": "https://github.com/camilledaisy/vendingmachine#readme",
+  "dependencies": {
+    "lucide-react": "^1.53.0",
+    "motion": "^14.0.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "autoprefixer": "^10.6.1",
+    "postcss": "^8.5.29",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4"
+  },
+  "private": true,
+  "type": "module"
+}

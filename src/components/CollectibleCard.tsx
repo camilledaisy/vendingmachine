@@ -1,0 +1,78 @@
+import { useState, type ReactNode } from 'react'
+import { motion } from 'motion/react'
+import { Download, Heart, Sparkles } from 'lucide-react'
+import { catOf, type Item } from '../data/items'
+import { cardSvg, saveImage } from '../lib/image'
+import { ObjectArt } from './ObjectArt'
+import { Modal } from './Modal'
+
+interface Props {
+  item: Item
+  isNew?: boolean
+  fav: boolean
+  onFav: () => void
+  onClose: () => void
+  closeLabel?: string
+  extra?: ReactNode
+}
+
+export function CollectibleCard({ item, isNew, fav, onFav, onClose, closeLabel = 'Back to the machine', extra }: Props) {
+  const cat = catOf(item.cat)
+  const [status, setStatus] = useState('')
+
+  const save = async () => {
+    setStatus('Developing the picture…')
+    try {
+      await saveImage(cardSvg(item), `${item.id}-emotional-vending-machine.png`)
+      setStatus('Saved. It looks lovely.')
+    } catch {
+      setStatus('The machine could not make the image. It apologises.')
+    }
+  }
+
+  return (
+    <Modal title={`${item.name}. ${item.message}`} onClose={onClose} bare className="max-w-[390px]">
+      <motion.article
+        initial={{ scale: 0.3, y: 240, rotate: -10, opacity: 0 }}
+        animate={{ scale: 1, y: 0, rotate: 0, opacity: 1 }}
+        transition={{ type: 'spring', stiffness: 170, damping: 17 }}
+        className="paper relative rounded-2xl border-[3px] border-charcoal p-4 shadow-[0_12px_0_rgba(64,59,54,.35)]"
+      >
+        <div className="rounded-xl border-2 border-dashed border-burgundy/60 p-3">
+          <div className="flex items-center justify-between font-display text-[13px] text-burgundy">
+            <span>
+              {cat.code} · {cat.label.length > 22 ? cat.id + ' collection' : cat.label}
+            </span>
+            <span>No. {item.inv}</span>
+          </div>
+          <div className="card-art relative mt-3 flex items-center justify-center rounded-lg border-2 border-charcoal bg-sage py-5">
+            <ObjectArt id={item.id} name={item.name} size={168} className="float" />
+            {isNew && (
+              <span className="absolute right-2 top-2 flex rotate-6 items-center gap-1 rounded border-2 border-burgundy bg-cream px-1.5 py-0.5 font-display text-xs font-bold text-burgundy">
+                <Sparkles size={12} aria-hidden /> NEW
+              </span>
+            )}
+          </div>
+          <h2 className="mt-4 text-center font-display text-[26px] font-bold leading-tight text-charcoal">{item.name}</h2>
+          <p className="mt-2 text-center font-serif text-[19px] font-medium italic leading-snug text-charcoal">“{item.message}”</p>
+          <p className="mt-3 text-center font-serif text-[14px] leading-snug text-charcoal/80">{item.description}</p>
+        </div>
+        {extra}
+        <div className="mt-4 flex flex-wrap justify-center gap-2">
+          <button className="btn" onClick={onFav} aria-pressed={fav}>
+            <Heart size={16} aria-hidden fill={fav ? '#914F4F' : 'none'} /> {fav ? 'Favourited' : 'Favourite'}
+          </button>
+          <button className="btn" onClick={save}>
+            <Download size={16} aria-hidden /> Save image
+          </button>
+          <button className="btn btn-primary" onClick={onClose} data-autofocus>
+            {closeLabel}
+          </button>
+        </div>
+        <p role="status" className="mt-2 min-h-[1.25rem] text-center font-serif text-sm text-charcoal/80">
+          {status}
+        </p>
+      </motion.article>
+    </Modal>
+  )
+}
