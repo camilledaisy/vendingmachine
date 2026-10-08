@@ -114,7 +114,6 @@ export default function App() {
 
           <div className="ground ground-text relative flex-1 px-3 pb-10 pt-6">
             <div className="pointer-events-none absolute left-1/2 top-0 h-[160px] w-[760px] max-w-full -translate-x-1/2" style={{ opacity: "var(--glow)" }} aria-hidden><div className="street-glow h-full w-full" /></div>
-            <div className="puddle pointer-events-none absolute left-[calc(50%-190px)] top-[10px] h-[22px] w-[170px]" aria-hidden />
             {phase !== "night" && <div className="pointer-events-none absolute left-[6%] top-[4px]" aria-hidden><Pigeon /></div>}
           <p className="relative mx-auto mt-5 max-w-[34rem] text-center font-serif text-[15px] font-medium">
             Open 24 hours. No money required. No refunds on existential realizations.
