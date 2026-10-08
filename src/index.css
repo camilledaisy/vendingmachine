@@ -209,11 +209,8 @@ body {
 .calm .spark, .calm .puff, .calm .heart-float, .calm .sheen { display: none; }
 .calm .rise, .calm .drop-in, .calm .stamp, .calm .print, .calm .flip, .calm .lcd-in { opacity: 1 !important; }
 
-.lamp-glow { background: radial-gradient(circle, rgba(242,217,141,.65), rgba(242,217,141,.2) 45%, transparent 70%); animation: lampflick 6s ease-in-out infinite; }
 .street-glow { background: radial-gradient(ellipse at 50% 100%, rgba(242,217,141,.55), rgba(242,217,141,0) 70%); animation: lampflick 7s ease-in-out infinite; }
 .puddle { border-radius: 50%; background: radial-gradient(ellipse, rgba(255,250,240,.55), rgba(163,177,138,.25) 60%, transparent 72%); border-bottom: 2px solid rgba(64,59,54,.25); animation: shimmer 5s ease-in-out infinite; }
-.moth { position: absolute; left: 103px; top: 31px; width: 0; height: 0; animation: orbit 6s linear infinite; animation-delay: var(--d); }
-.moth b { position: absolute; left: var(--r); top: 0; width: 7px; height: 4px; border-radius: 50%; background: #F5EEDF; border: 1px solid #403B36; animation: flap .18s linear infinite alternate; }
 .pigeon-walk { animation: pigeonwalk 26s linear infinite; }
 .pigeon-head { transform-box: fill-box; transform-origin: 30% 100%; animation: peck 1.4s ease-in-out infinite; }
 .neon { box-shadow: 0 0 18px rgba(212,165,165,.55), inset 0 0 8px rgba(0,0,0,.6); }
@@ -221,8 +218,6 @@ body {
 .neon-b { color: #D4A5A5; text-shadow: 0 0 6px #D4A5A5, 0 0 12px rgba(212,165,165,.7); }
 @keyframes lampflick { 0%,100% { opacity: 1 } 40% { opacity: .88 } 42% { opacity: 1 } 75% { opacity: .92 } }
 @keyframes shimmer { 0%,100% { opacity: .8; transform: scaleX(1) } 50% { opacity: 1; transform: scaleX(1.04) } }
-@keyframes orbit { from { transform: translate(0,0) rotate(0) scaleY(.5) } to { transform: translate(0,0) rotate(360deg) scaleY(.5) } }
-@keyframes flap { from { transform: scaleX(1) } to { transform: scaleX(.35) } }
 @keyframes pigeonwalk { 0% { transform: translateX(0) scaleX(1) } 42% { transform: translateX(150px) scaleX(1) } 50% { transform: translateX(150px) scaleX(-1) } 92% { transform: translateX(0) scaleX(-1) } 100% { transform: translateX(0) scaleX(1) } }
 @keyframes peck { 0%,60%,100% { transform: rotate(0) } 70% { transform: rotate(32deg) translateY(2px) } 80% { transform: rotate(0) } 90% { transform: rotate(28deg) } }
 @keyframes neon { 0%,100% { opacity: 1 } 47% { opacity: .85 } 50% { opacity: 1 } }

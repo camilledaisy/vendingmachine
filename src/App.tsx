@@ -9,7 +9,7 @@ import { CollectionShelf } from './components/CollectionShelf'
 import { MaintenanceLog } from './components/MaintenanceLog'
 import { ReceiptGenerator } from './components/ReceiptGenerator'
 import { HatchNote } from './components/HatchNote'
-import { Lamp, NeonSign, Pigeon, TearFlyer, Topiary, Window } from './components/Scenery'
+import { NeonSign, Pigeon, TearFlyer, Topiary } from './components/Scenery'
 
 type Panel = 'shelf' | 'log' | 'hatch' | 'receipt' | null
 
@@ -61,10 +61,8 @@ export default function App() {
         <main className="relative z-10 flex flex-1 flex-col">
           <div className="px-3">
           <div style={{ ["--d" as string]: ".25s" }} className="rise relative mx-auto max-w-[580px]">
-            <div className="absolute bottom-0 right-[calc(100%+40px)] hidden lg:block" aria-hidden><Lamp /></div>
             <div className="absolute right-[calc(100%+30px)] top-[10px] hidden lg:block" aria-hidden><NeonSign /></div>
             <div className="absolute right-[calc(100%+150px)] top-[110px] hidden xl:block" aria-hidden><TearFlyer /></div>
-            <div className="absolute left-[calc(100%+34px)] top-[20px] hidden lg:block" aria-hidden><Window /></div>
             <div className="absolute -right-[84px] bottom-0 hidden lg:block" aria-hidden>
               <Topiary />
             </div>

@@ -63,26 +63,6 @@ export const Topiary = () => (
 
 // ---- the street around the machine (placed in App) ----
 
-export const Lamp = () => (
-  <div className="relative h-[430px] w-[130px]" aria-hidden>
-    <div className="lamp-glow absolute -left-[27px] -top-[99px] h-[260px] w-[260px] rounded-full" />
-    <svg viewBox="0 0 130 430" width="130" height="430" className="relative">
-      <g stroke="#403B36" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round">
-        <path d="M62 428 V70 Q62 24 104 24" fill="none" stroke="#403B36" strokeWidth="9" />
-        <path d="M62 428 V70 Q62 24 104 24" fill="none" stroke="#6D655C" strokeWidth="4" />
-        <rect x="52" y="392" width="20" height="36" rx="3" fill="#6D655C" />
-        <path d="M84 24 H122 L116 14 H90Z" fill="#6D655C" />
-        <path d="M88 24 H118 L112 38 H94Z" fill="#F2D98D" />
-      </g>
-    </svg>
-    {[0, 1, 2].map((i) => (
-      <i key={i} className="moth" style={{ ['--d' as string]: `${-i * 2.1}s`, ['--r' as string]: `${26 + i * 8}px` }}>
-        <b />
-      </i>
-    ))}
-  </div>
-)
-
 export const NeonSign = () => (
   <div className="relative" aria-hidden>
     <svg viewBox="0 0 160 14" width="160" height="14" className="absolute -top-3 left-0">
@@ -109,23 +89,6 @@ export const TearFlyer = () => (
       ))}
     </div>
   </div>
-)
-
-export const Window = () => (
-  <svg viewBox="0 0 120 150" width="120" height="150" aria-hidden>
-    <g stroke="#403B36" strokeWidth="3" strokeLinejoin="round">
-      <rect x="10" y="8" width="100" height="116" rx="5" fill="#E7D6C2" />
-      <rect x="18" y="16" width="84" height="100" rx="3" fill="#F6DF96" />
-      <path d="M60 16 V116 M18 66 H102" stroke="#403B36" strokeWidth="3" />
-      <path d="M18 16 Q34 40 30 116 H18Z" fill="#D4A5A5" />
-      <path d="M102 16 Q86 40 90 116 H102Z" fill="#D4A5A5" />
-      <rect x="4" y="124" width="112" height="14" rx="3" fill="#C9B79D" />
-      <path d="M72 124 Q70 104 78 96 Q84 106 82 124Z" fill="#6F9A68" strokeWidth="2" />
-      <path d="M82 124 Q88 108 100 108 Q96 120 92 124Z" fill="#86B17E" strokeWidth="2" />
-      <rect x="66" y="118" width="30" height="7" rx="1.5" fill="#B5724F" strokeWidth="2" />
-    </g>
-    <ellipse cx="46" cy="104" rx="10" ry="8" fill="#403B36" opacity=".55" />
-  </svg>
 )
 
 export const Pigeon = () => (
