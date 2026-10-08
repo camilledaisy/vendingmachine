@@ -65,6 +65,12 @@ export const ITEMS: Item[] = [
   { id: 'toiletpotato', cat: 'B', inv: '1012', name: 'Potato on a Toilet', message: 'A worried potato sitting on a toilet.', description: 'Photo item.', image: '/memes/toilet-potato.jpg' },
   { id: 'banana', cat: 'B', inv: '1013', name: 'Banana in a Bow Tie', message: 'A felt banana with a face and a striped bow tie.', description: 'Photo item.', image: '/memes/banana-bowtie.jpg' },
 
+  { id: 'screamingmonkey', cat: 'B', inv: '1014', name: 'Drawn Monkey, Screaming With Joy', message: 'A cartoon monkey with an enormous open mouth.', description: 'Photo item.', image: '/memes/screaming-monkey.jpg' },
+  { id: 'minionmonkey', cat: 'B', inv: '1015', name: 'Goggled Overalls Creature', message: 'A yellow creature in denim overalls with a very calm face.', description: 'Photo item.', image: '/memes/minion-monkey.jpg' },
+  { id: 'cupcakerabbit', cat: 'B', inv: '1016', name: 'Rabbit With a Cupcake', message: 'A wide-eyed white rabbit holding a cupcake with a lit fuse.', description: 'Photo item.', image: '/memes/rabbid-cupcake.jpg' },
+  { id: 'hearteyes', cat: 'B', inv: '1017', name: 'Drawn Monkey, Heart Eyes', message: 'A cartoon monkey with pink hearts for eyes.', description: 'Photo item.', image: '/memes/heart-eyes-monkey.jpg' },
+  { id: 'lipsmonkey', cat: 'B', inv: '1018', name: 'Drawn Monkey, Realistic Face', message: 'A cartoon monkey with a strangely realistic face and pursed lips.', description: 'Photo item.', image: '/memes/lips-monkey.jpg' },
+
   // C — tomorrow
   { id: 'key', cat: 'C', inv: '0750', name: 'Spare Key', message: "For doors you haven't discovered yet.", description: 'Fits no lock you currently own. Keep it somewhere you will find it.' },
   { id: 'ticket', cat: 'C', inv: '0288', name: 'Ticket to Tomorrow', message: 'Valid for one more chance to experience something unexpectedly nice.', description: 'Non-transferable, non-refundable, and surprisingly easy to use.' },
