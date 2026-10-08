@@ -263,10 +263,11 @@ export function VendingMachine({ owned, favs, reduced, birthday, onCollect, onTo
 
           {/* kick plate with the note */}
           <div className="kick mt-3 flex items-center justify-center rounded-md border-[3px] border-charcoal px-3 pb-3 pt-5">
-            <p className="note relative max-w-[94%] rotate-[-1.2deg] px-5 pb-2 pt-4 text-center font-scrawl text-[25px] leading-[1.1] text-charcoal">
-              <span className="washi" aria-hidden />
-              Please be gentle with the machine. It is doing its best.
-              <span className="note-heart" aria-hidden>♥</span>
+            <p className="note relative rotate-[-2deg] px-6 pb-5 pt-6 text-center font-note text-[22px] leading-[1.15] text-charcoal sm:text-[24px]">
+              <span className="pin" aria-hidden />
+              Please be gentle with the machine.
+              <br />
+              It is doing <span className="squiggle">its best.</span>
             </p>
           </div>
         </div>

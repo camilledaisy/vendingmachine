@@ -116,22 +116,22 @@ body {
   .tray { box-shadow: inset 0 8px 14px rgba(0,0,0,.6); }
   .tray-flap { background: linear-gradient(#5a544d, #403B36); border-bottom: 4px solid #2a2724; border-radius: 4px; backface-visibility: hidden; }
   .kick { background: #8B9A72; background-image: var(--noise); }
-  /* a ruled index card held up with washi tape */
-  .note {
-    background-color: #FFFAF0;
-    background-image: linear-gradient(to right, transparent 26px, rgba(145,79,79,.35) 26px, rgba(145,79,79,.35) 27px, transparent 27px),
-      repeating-linear-gradient(to bottom, transparent 0 25px, rgba(115,152,170,.35) 25px 26px);
-    background-position: 0 0, 0 12px;
-    border: 1.5px solid rgba(64,59,54,.35);
-    box-shadow: 0 3px 0 rgba(64,59,54,.18), 0 8px 14px -6px rgba(64,59,54,.45);
+  /* a butter-yellow sticky note, pinned */
+  .note { isolation: isolate; padding-right: 30px; filter: drop-shadow(2px 6px 5px rgba(64,59,54,.4)); }
+  .note::before { /* paper with a snipped corner */
+    content: ''; position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(170deg, #F8E7A6 0%, #F2D98D 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 82%, 91% 100%, 0 100%);
   }
-  .washi {
-    position: absolute; top: -13px; left: 50%; width: 84px; height: 22px; transform: translateX(-50%) rotate(-3deg);
-    background: repeating-linear-gradient(45deg, rgba(212,165,165,.88) 0 7px, rgba(245,238,223,.9) 7px 14px);
-    clip-path: polygon(0 0, 4% 12%, 0 25%, 4% 38%, 0 50%, 4% 62%, 0 75%, 4% 88%, 0 100%, 100% 100%, 96% 88%, 100% 75%, 96% 62%, 100% 50%, 96% 38%, 100% 25%, 96% 12%, 100% 0);
-    box-shadow: 0 1px 2px rgba(64,59,54,.3);
+  .note::after { /* the folded-over corner */
+    content: ''; position: absolute; right: 0; bottom: 0; width: 9%; height: 18%; z-index: -1;
+    background: #D9BE6A; clip-path: polygon(0 0, 100% 0, 0 100%);
   }
-  .note-heart { position: absolute; right: 8px; bottom: 2px; font-size: 14px; color: #914F4F; transform: rotate(12deg); font-family: sans-serif; }
+  .pin {
+    position: absolute; top: -9px; left: 50%; width: 17px; height: 17px; margin-left: -8px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #d98a8a, #914F4F 60%); border: 2px solid #403B36; box-shadow: 2px 3px 2px rgba(64,59,54,.4);
+  }
+  .squiggle { text-decoration: underline wavy #914F4F 1.5px; text-underline-offset: 4px; }
   .maint { box-shadow: 0 2px 0 #403B36; }
 
   /* shelf */

@@ -16,6 +16,7 @@ export default {
         lcd: ['VT323', 'ui-monospace', 'monospace'],
         hand: ['Caveat', 'cursive'],
         tagline: ['"Gloria Hallelujah"', 'Caveat', 'cursive'],
+        note: ['"Patrick Hand"', 'Caveat', 'cursive'],
         scrawl: ['"Reenie Beanie"', 'Caveat', 'cursive'],
         serif: ['Lora', 'Georgia', 'serif'],
       },
