@@ -55,6 +55,10 @@ export const ITEMS: Item[] = [
   { id: 'bigsmile', cat: 'B', inv: '1004', name: 'Large Calm, Small Dog', message: 'One very big feeling and one very small problem. Both are in the picture.', description: 'The large one is serene. The small one has doubts. They coexist.', image: '/memes/big-smile-small-dog.jpg' },
   { id: 'dumpling', cat: 'B', inv: '1005', name: 'Dumpling, Having a Day', message: 'Cry, then eat something warm. Both count as steps.', description: 'Curled up and tear-streaked, but still soft at heart.', image: '/memes/sad-dumpling.jpg' },
 
+  { id: 'happymonkey', cat: 'B', inv: '1006', name: 'Very Happy Drawing', message: 'Nobody told it to calm down, and it is better for it.', description: 'Drawn at some point, by someone, with total commitment.', image: '/memes/happy-monkey.jpg' },
+  { id: 'snailmonkey', cat: 'B', inv: '1007', name: 'Sponge-Adjacent Neighbour', message: 'Do not ask. Just wave back.', description: 'Appeared from the background with feelers and no explanation.', image: '/memes/snail-monkey.jpg' },
+  { id: 'heartbear', cat: 'B', inv: '1008', name: 'Bear with a Heart', message: 'Is giving you the heart. Is also judging you a little.', description: 'Soft, sincere, and watching how you take it.', image: '/memes/heart-bear.jpg' },
+
   // C — tomorrow
   { id: 'key', cat: 'C', inv: '0750', name: 'Spare Key', message: "For doors you haven't discovered yet.", description: 'Fits no lock you currently own. Keep it somewhere you will find it.' },
   { id: 'ticket', cat: 'C', inv: '0288', name: 'Ticket to Tomorrow', message: 'Valid for one more chance to experience something unexpectedly nice.', description: 'Non-transferable, non-refundable, and surprisingly easy to use.' },
