@@ -68,6 +68,8 @@ export const ITEMS: Item[] = [
   { id: 'eggbaby', cat: 'B', inv: '1021', name: 'Sprout Baby in an Eggshell', message: 'A sleepy sprout-headed baby holding a four-leaf clover.', description: 'Photo item.', image: '/memes/egg-baby.jpg' },
   { id: 'sunsetbaby', cat: 'B', inv: '1022', name: 'Long-Eared Baby at Sunset', message: 'A long-eared baby gazing at the sunset.', description: 'Photo item.', image: '/memes/sunset-baby.jpg' },
 
+  { id: 'lyingpotato', cat: 'B', inv: '1023', name: 'Potato, Lying Down', message: 'A small potato lying on its side, having given up gracefully.', description: 'Photo item.', image: '/memes/lying-potato.jpg' },
+
   // C — tomorrow
   { id: 'key', cat: 'C', inv: '0750', name: 'Spare Key', message: "For doors you haven't discovered yet.", description: 'Fits no lock you currently own. Keep it somewhere you will find it.' },
   { id: 'ticket', cat: 'C', inv: '0288', name: 'Ticket to Tomorrow', message: 'Valid for one more chance to experience something unexpectedly nice.', description: 'Non-transferable, non-refundable, and surprisingly easy to use.' },
