@@ -25,7 +25,7 @@ export function CollectibleCard({ item, isNew, fav, onFav, onClose, closeLabel =
   const save = async () => {
     setStatus('Developing the picture…')
     try {
-      await saveImage(cardSvg(item), `${item.id}-emotional-vending-machine.png`)
+      await saveImage(await cardSvg(item), `${item.id}-emotional-vending-machine.png`)
       setStatus('Saved. It looks lovely.')
     } catch {
       setStatus('The machine could not make the image. It apologises.')
@@ -49,7 +49,11 @@ export function CollectibleCard({ item, isNew, fav, onFav, onClose, closeLabel =
             <span>No. {item.inv}</span>
           </div>
           <div className="card-art relative mt-3 flex items-center justify-center rounded-lg border-2 border-charcoal bg-sage py-5">
-            <ObjectArt id={item.id} name={item.name} size={168} className="float" />
+            {item.image ? (
+              <img src={item.image} alt={item.name} className="max-h-[280px] w-auto max-w-[92%] -rotate-1 rounded border-[6px] border-cream bg-cream object-contain shadow-md" />
+            ) : (
+              <ObjectArt id={item.id} name={item.name} size={168} className="float" />
+            )}
             {isNew && (
               <span className="absolute right-2 top-2 flex rotate-6 items-center gap-1 rounded border-2 border-burgundy bg-cream px-1.5 py-0.5 font-display text-xs font-bold text-burgundy">
                 <Sparkles size={12} aria-hidden /> NEW

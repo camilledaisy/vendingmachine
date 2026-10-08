@@ -19,6 +19,7 @@ export interface Item {
   message: string
   description: string
   inv: string // unique inventory number
+  image?: string // optional photo/meme in public/memes/, shown instead of the drawing
 }
 
 export const CATEGORIES: Category[] = [

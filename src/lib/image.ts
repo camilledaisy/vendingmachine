@@ -20,7 +20,31 @@ export function wrap(text: string, cols: number): string[] {
 const lines = (ls: string[], x: number, y: number, lh: number, attrs: string) =>
   ls.map((l, i) => `<text x="${x}" y="${y + i * lh}" text-anchor="middle" ${attrs}>${esc(l)}</text>`).join('')
 
-export function cardSvg(item: Item) {
+async function toDataUri(url: string): Promise<{ uri: string; w: number; h: number }> {
+  const blob = await (await fetch(url)).blob()
+  const uri = await new Promise<string>((res, rej) => {
+    const r = new FileReader()
+    r.onload = () => res(r.result as string)
+    r.onerror = () => rej(r.error)
+    r.readAsDataURL(blob)
+  })
+  const img = await new Promise<HTMLImageElement>((res, rej) => {
+    const i = new Image()
+    i.onload = () => res(i)
+    i.onerror = () => rej(new Error('image failed'))
+    i.src = uri
+  })
+  return { uri, w: img.naturalWidth, h: img.naturalHeight }
+}
+
+export async function cardSvg(item: Item) {
+  // Photos must be embedded as data URIs or the exported PNG would come out blank.
+  let art = `<g transform="translate(175 138) scale(4.1)">${artMarkup(item.id)}</g>`
+  if (item.image) {
+    const { uri, w, h } = await toDataUri(item.image)
+    const k = Math.min(350 / w, 260 / h)
+    art = `<image href="${uri}" x="${300 - (w * k) / 2}" y="${253 - (h * k) / 2}" width="${w * k}" height="${h * k}"/>`
+  }
   const cat = catOf(item.cat)
   const name = wrap(item.name, 20)
   const msg = wrap(item.message, 30)
@@ -42,7 +66,7 @@ export function cardSvg(item: Item) {
 <text x="300" y="58" text-anchor="middle" font-family="Courier New,monospace" font-size="15" letter-spacing="3" fill="#914F4F">THE EMOTIONAL VENDING MACHINE</text>
 <text x="300" y="84" text-anchor="middle" font-family="Courier New,monospace" font-size="14" fill="#403B36">${cat.code} · ${esc(cat.label)}</text>
 <rect x="110" y="108" width="380" height="290" rx="20" fill="#A3B18A" stroke="#403B36" stroke-width="3"/>
-<g transform="translate(175 138) scale(4.1)">${artMarkup(item.id)}</g>
+${art}
 ${nameSvg}${msgSvg}${descSvg}
 <text x="300" y="${h - 36}" text-anchor="middle" font-family="Courier New,monospace" font-size="15" fill="#914F4F">ITEM No. ${item.inv}</text>
 </svg>`,
