@@ -15,6 +15,8 @@ export default {
         display: ['"Pixelify Sans"', 'ui-monospace', 'monospace'],
         lcd: ['VT323', 'ui-monospace', 'monospace'],
         hand: ['Caveat', 'cursive'],
+        tagline: ['"Gloria Hallelujah"', 'Caveat', 'cursive'],
+        scrawl: ['"Reenie Beanie"', 'Caveat', 'cursive'],
         serif: ['Lora', 'Georgia', 'serif'],
       },
     },

@@ -1,19 +1,38 @@
 // Little illustrated bits of the street: the cat, a party hat, a topiary, a flyer.
 export const Cat = () => (
-  <svg viewBox="0 0 92 46" width="92" height="46" aria-hidden>
+  <svg viewBox="0 0 104 58" width="104" height="58" aria-hidden overflow="visible">
     <g stroke="#403B36" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round">
-      <path d="M10 38 Q-2 34 4 22" fill="none" strokeWidth="5" stroke="#403B36" />
-      <path d="M10 38 Q-2 34 4 22" fill="none" strokeWidth="2.5" stroke="#fff" />
-      <ellipse cx="42" cy="32" rx="34" ry="11" fill="#fff" />
-      <circle cx="72" cy="26" r="12" fill="#fff" />
-      <path d="M62 20 L63 8 L71 15Z" fill="#fff" />
-      <path d="M82 20 L82 8 L74 15Z" fill="#fff" />
-      <path d="M64 8 L66 13 L63 13Z M81 8 L79 13 L82 13Z" fill="#D4A5A5" strokeWidth="1" />
-      <path d="M65 27 q2.5 2.5 5 0 M74 27 q2.5 2.5 5 0" fill="none" strokeWidth="1.6" />
-      <path d="M71 31 h3 l-1.5 2z" fill="#D4A5A5" strokeWidth="1" />
-      <circle cx="64" cy="31" r="2.2" fill="#D4A5A5" stroke="none" opacity=".7" />
-      <circle cx="80" cy="31" r="2.2" fill="#D4A5A5" stroke="none" opacity=".7" />
-      <path d="M30 24 q4 -2 8 0 M44 23 q4 -2 8 0" fill="none" strokeWidth="1" opacity=".25" />
+      <g className="cat-tail">
+        <path d="M14 46 Q-4 48 0 32 Q3 22 10 26" fill="none" stroke="#403B36" strokeWidth="7.5" />
+        <path d="M14 46 Q-4 48 0 32 Q3 22 10 26" fill="none" stroke="#FFFAF0" strokeWidth="3.8" />
+        <path d="M2 38 h4 M3 31 h4" stroke="#D4A5A5" strokeWidth="2" />
+      </g>
+      <g className="cat-breath">
+        <path d="M10 52 Q8 30 40 28 Q72 26 84 38 L86 52Z" fill="#FFFAF0" />
+        <path d="M26 31 Q40 27 54 29 Q50 38 38 38 Q28 38 26 31Z" fill="#D4A5A5" stroke="none" />
+        <path d="M24 44 q3 -3 6 0 M40 46 q3 -3 6 0" fill="none" strokeWidth="1.2" opacity=".28" />
+        <path d="M10 52 Q8 30 40 28 Q72 26 84 38 L86 52Z" fill="none" />
+      </g>
+      <g className="cat-head">
+        <g className="cat-ear"><path d="M68 24 L69 8 L80 18Z" fill="#FFFAF0" /><path d="M71 20 L71 13 L76 18Z" fill="#D4A5A5" strokeWidth="0" /></g>
+        <path d="M96 24 L96 8 L86 18Z" fill="#FFFAF0" />
+        <path d="M94 20 L94 13 L90 18Z" fill="#D4A5A5" strokeWidth="0" />
+        <ellipse cx="82" cy="34" rx="16" ry="14" fill="#FFFAF0" />
+        <path d="M74 22 Q82 26 90 22 Q92 28 82 30 Q72 28 74 22Z" fill="#D4A5A5" stroke="none" opacity=".75" />
+        <path d="M73 33 q3 3 6 0 M86 33 q3 3 6 0" fill="none" strokeWidth="1.8" />
+        <path d="M81 38 h4 l-2 2.5z" fill="#914F4F" strokeWidth="1" />
+        <path d="M83 40.5 v2 q-2 2 -4 1 M83 42.5 q2 2 4 1" fill="none" strokeWidth="1" />
+        <path d="M66 38 h-7 M66 41 l-6 2 M100 38 h7 M100 41 l6 2" fill="none" strokeWidth="1" opacity=".5" />
+        <circle cx="71" cy="39" r="2.6" fill="#D4A5A5" stroke="none" opacity=".6" />
+        <circle cx="95" cy="39" r="2.6" fill="#D4A5A5" stroke="none" opacity=".6" />
+      </g>
+      <ellipse cx="72" cy="52" rx="7" ry="3.6" fill="#FFFAF0" />
+      <ellipse cx="90" cy="52" rx="7" ry="3.6" fill="#FFFAF0" />
+    </g>
+    <g fill="#403B36" fontFamily="'Pixelify Sans',monospace" fontWeight="700" stroke="none">
+      <text className="cat-z" x="98" y="14" fontSize="9">z</text>
+      <text className="cat-z cat-z2" x="104" y="6" fontSize="11">z</text>
+      <text className="cat-z cat-z3" x="110" y="-4" fontSize="13">Z</text>
     </g>
   </svg>
 )

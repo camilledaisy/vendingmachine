@@ -55,7 +55,7 @@ export default function App() {
           <h1 className="paper mx-auto inline-block max-w-[92vw] -rotate-[0.6deg] border-[3px] border-burgundy px-5 py-3 font-display text-[22px] font-bold leading-tight tracking-wide text-charcoal shadow-[4px_5px_0_rgba(64,59,54,.3)] sm:text-4xl md:text-[36px]">
             THE EMOTIONAL VENDING MACHINE
           </h1>
-          <p className="mt-3 font-hand text-[28px] font-bold leading-none text-charcoal md:text-[32px]">“Some things you need aren’t sold in stores.”</p>
+          <p className="mt-3 font-tagline text-[19px] leading-snug text-burgundy sm:text-[22px] md:text-[25px]">“Some things you need aren’t sold in stores.”</p>
         </header>
 
         <main className="relative z-10 px-3">

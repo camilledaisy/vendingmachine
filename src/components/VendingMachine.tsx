@@ -174,7 +174,7 @@ export function VendingMachine({ owned, favs, reduced, birthday, onCollect, onTo
       onClick={(e) => !(e.target as HTMLElement).closest('button,a') && wake()}
     >
       <button
-        className="absolute -top-[41px] left-6 z-10 cursor-pointer md:left-10"
+        className="absolute -top-[50px] left-6 z-10 cursor-pointer md:left-10"
         aria-label="A sleeping cat"
         onClick={() => say('The cat is not part of the inventory.', 'Please do not ask. It has been tried.')}
       >
@@ -262,11 +262,11 @@ export function VendingMachine({ owned, favs, reduced, birthday, onCollect, onTo
           </div>
 
           {/* kick plate with the note */}
-          <div className="kick mt-3 flex items-center justify-center rounded-md border-[3px] border-charcoal px-3 py-2.5">
-            <p className="note relative max-w-[94%] rotate-[-1.5deg] px-4 py-1.5 text-center font-hand text-[19px] font-bold leading-[1.05] text-charcoal">
-              <span className="tape left-1 -rotate-12" aria-hidden />
-              <span className="tape right-1 rotate-12" aria-hidden />
+          <div className="kick mt-3 flex items-center justify-center rounded-md border-[3px] border-charcoal px-3 pb-3 pt-5">
+            <p className="note relative max-w-[94%] rotate-[-1.2deg] px-5 pb-2 pt-4 text-center font-scrawl text-[25px] leading-[1.1] text-charcoal">
+              <span className="washi" aria-hidden />
               Please be gentle with the machine. It is doing its best.
+              <span className="note-heart" aria-hidden>♥</span>
             </p>
           </div>
         </div>
