@@ -176,7 +176,8 @@ function Snail() {
 
 // ---- Pocket Moon: find the faint stars
 function Stars() {
-  const [stars] = useState(() => Array.from({ length: 7 }, () => ({ x: 6 + rnd(88), y: 6 + rnd(84) })))
+  // 7 of the 12 cells of a 4x3 grid, jittered, so the stars are always spread out
+  const [stars] = useState(() => shuffle(Array.from({ length: 12 }, (_, i) => i)).slice(0, 7).map((c) => ({ x: (c % 4) * 25 + 6 + rnd(13), y: Math.floor(c / 4) * 33 + 6 + rnd(21) })))
   const [found, setFound] = useState<number[]>([])
   return (
     <div>
@@ -404,7 +405,7 @@ function Sliding() {
             const i = t.indexOf(v)
             return (
               <button key={v} onClick={() => move(i)} aria-label={`Tile ${v}, row ${(i / 3 | 0) + 1} column ${(i % 3) + 1}`}
-                className="absolute flex items-center justify-center rounded-md border-2 border-charcoal font-display text-2xl font-bold text-charcoal transition-[left,top] duration-150"
+                className="absolute flex items-center justify-center rounded-md border-2 border-charcoal font-serif text-3xl font-bold text-charcoal transition-[left,top] duration-150"
                 style={{ width: '31.5%', height: '31.5%', left: `${(i % 3) * 34.25}%`, top: `${(i / 3 | 0) * 34.25}%`, background: COL[(v + (v > 4 ? 1 : 0)) % 4] }}>
                 {v}
               </button>

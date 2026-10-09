@@ -63,7 +63,9 @@ export function VendingMachine({ owned, favs, reduced, birthday, onCollect, onTo
   }, [])
 
   useEffect(() => {
-    if (phase === 'delivered') trayBtn.current?.focus()
+    if (phase !== 'delivered') return
+    trayBtn.current?.focus({ preventScroll: true }) // focusing must not yank the page around
+    tray.current?.scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' })
   }, [phase])
 
   const wake = () => {
@@ -105,6 +107,9 @@ export function VendingMachine({ owned, favs, reduced, birthday, onCollect, onTo
     parcelRef.current = isParcel
     setParcel(isParcel)
     setOpened(false)
+    // on a phone the tray starts below the fold: bring the whole machine into view so the drop can be seen
+    if (tray.current && tray.current.getBoundingClientRect().bottom > innerHeight)
+      root.current?.scrollIntoView({ block: 'start', behavior: reduced ? 'auto' : 'smooth' })
     const it = choose(isParcel ? null : sel)
     last.current = it.id
     setItem(it)
@@ -178,7 +183,7 @@ export function VendingMachine({ owned, favs, reduced, birthday, onCollect, onTo
     setOpened(false)
     setTrayOpen(false)
     say('Thank you for visiting.', 'I hope the rest of your day is at least moderately pleasant.')
-    later(() => cells.current.A?.focus(), 60)
+    later(() => cells.current.A?.focus({ preventScroll: true }), 60)
   }
 
   const busy = phase === 'dispensing' || phase === 'delivered' || phase === 'revealed' || phase === 'boot'
@@ -187,7 +192,7 @@ export function VendingMachine({ owned, favs, reduced, birthday, onCollect, onTo
   return (
     <div
       ref={root}
-      className="relative mx-auto w-full max-w-[580px]"
+      className="relative mx-auto w-full max-w-[580px] scroll-mt-14"
       onClick={(e) => !(e.target as HTMLElement).closest('button,a') && wake()}
     >
       <button

@@ -14,7 +14,7 @@ export function Modal({ title, onClose, children, className = '', bare = false }
     stack.push(me)
     const prev = document.activeElement as HTMLElement | null
     const el = panel.current!
-    ;(el.querySelector<HTMLElement>('[data-autofocus]') ?? el).focus()
+    ;(el.querySelector<HTMLElement>('[data-autofocus]') ?? el).focus({ preventScroll: true })
     document.body.style.overflow = 'hidden'
     const onKey = (e: KeyboardEvent) => {
       if (stack[stack.length - 1] !== me) return
@@ -38,13 +38,13 @@ export function Modal({ title, onClose, children, className = '', bare = false }
       document.removeEventListener('keydown', onKey)
       stack.splice(stack.indexOf(me), 1)
       if (!stack.length) document.body.style.overflow = ''
-      prev?.focus?.()
+      prev?.focus?.({ preventScroll: true })
     }
   }, [])
 
   return (
     <motion.div
-      className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-charcoal/70 p-3 sm:items-center sm:p-6"
+      className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto overscroll-contain bg-charcoal/70 p-3 sm:items-center sm:p-6"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

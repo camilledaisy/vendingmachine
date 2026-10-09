@@ -146,12 +146,12 @@ export const ART: Record<string, string> = {
     P('M12 12 H52 L32 32Z', R) + P('M52 12 V52 L32 32Z', G) + P('M12 52 H52 L32 32Z', Y) + P('M12 12 V52 L32 32Z', '#B9C6A0') +
     L('M12 12 L52 52 M52 12 L12 52', 'stroke-width="1" opacity=".45"') +
     T(32, 22, 7, '1') + T(44, 35, 7, '2') + T(32, 48, 7, '3') + T(20, 35, 7, '4'),
-  snail:
+  snail: G_('translate(64 0) scale(-1 1)',
     P('M5 54 Q6 42 18 44 L30 46 Q56 46 58 54 Q58 56 54 56 H8 Q5 56 5 54Z', G) +
     L('M10 44 L7 32 M16 43 L16 30') + O(7, 31, 2, G, 'stroke-width="1.5"') + O(16, 29, 2, G, 'stroke-width="1.5"') +
     O(40, 28, 17, Y) +
     L('M40 28 a2 2 0 0 1 3 2 a5 5 0 0 1 -8 1 a9 9 0 0 1 12 -10 a13 13 0 0 1 6 15', 'stroke-width="1.5"') +
-    D(12, 50, 1.3),
+    D(12, 50, 1.3)),
   marble:
     O(32, 32, 22, G) +
     L('M13 38 Q30 22 51 36', `stroke="${C}" stroke-width="3"`) + L('M17 47 Q32 36 46 48', `stroke="${Y}" stroke-width="3"`) +
